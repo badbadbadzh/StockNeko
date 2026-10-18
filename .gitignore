@@ -5,3 +5,9 @@ data/
 node_modules/
 *.sqlite*
 *.log
+.tmp-*
+outputs/*.png
+work/*-*.png
+work/tests/*-export.json
+work/test-save.json
+work/browsers/

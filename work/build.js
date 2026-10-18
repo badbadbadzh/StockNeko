@@ -13,5 +13,11 @@ const html=read('index.template.html')
   .replace('__ENGINE__',()=>core+'\n'+read('v3/life-engine.js')+'\n'+read('v4/story-engine.js')+'\n'+read('engine.js')+'\n'+read('v3/local-profiles.js')+'\n'+read('v3/local-vault.js'))
   .replace('__UI__',()=>`const GameAssets={icon:'data:image/png;base64,${icon}',doll:'data:image/webp;base64,${doll}',capitalFace:'data:image/png;base64,${capitalFace}'};\n`+read('v2/chart-view.js')+'\n'+read('ui.js').replace("const PLAYER_CHARACTER='__PLAYER_CHARACTER__';","const PLAYER_CHARACTER='';")+'\n'+read('v2/ui-features.js')+'\n'+read('v3/life-ui.js')+'\n'+read('v3/auth-ui.js')+'\n'+read('v4/story-ui.js')+'\n'+read('v4/polish-ui.js')+'\n'+read('v5/settings.js')+'\n'+read('v5/terminal-ui.js')+'\n'+read('v5/capital-horror.js')+'\n'+read('v5/psychology.js')+'\n'+read('v5/extensions.js')+'\n'+read('v6/platform-ui.js')+'\n'+read('v5/start-screen.js'));
 const target=path.join(__dirname,'../outputs/拟股喵喵-A股生存手记.html');
+fs.mkdirSync(path.dirname(target),{recursive:true});
 fs.writeFileSync(target,html,'utf8');
 console.log(target+' ('+Math.round(Buffer.byteLength(html)/1024)+' KB)');
+const pagesDir=path.join(__dirname,'../docs');
+fs.mkdirSync(pagesDir,{recursive:true});
+fs.writeFileSync(path.join(pagesDir,'index.html'),html,'utf8');
+fs.writeFileSync(path.join(pagesDir,'.nojekyll'),'','utf8');
+console.log('GitHub Pages: docs/index.html');

@@ -2,6 +2,24 @@
 
 中文 A 股生存模拟游戏：本地登录、随机行情、交易终端、生活事件、久留美 NPC、资本压迫视觉和可选恐怖特效。
 
+Fan-made game by badbadbad based on the anime series FX Fighter KURUMICHAN.
+
+## 发布网页
+
+仓库内的 `docs/index.html` 是完整的网页试玩版。在 GitHub 仓库中打开 **Settings → Pages**，选择：
+
+- Source：**Deploy from a branch**
+- Branch：**main**
+- Folder：**/docs**
+
+点击 **Save**。首次部署完成后，游戏地址为：
+
+https://badbadbadzh.github.io/StockNeko/
+
+以后运行构建、提交并推送 `docs/` 的变动，网页就会随之更新。网站启用前，该地址不会提供游戏。
+
+GitHub Pages 托管的是本地登录、浏览器存档与模拟行情的静态试玩版。`server/` 的账户、在线社交及真实行情 API 需要另行部署 Node.js 服务，不能由 GitHub Pages 运行。换浏览器或设备不会自动同步存档。
+
 ## 快速试玩
 
 直接打开 `outputs/拟股喵喵-A股生存手记.html` 即可离线试玩。离线版本使用明确标记的 Demo Data，本地资料保存在浏览器中。
@@ -14,7 +32,7 @@
 npm run build
 ```
 
-构建结果写入 `outputs/拟股喵喵-A股生存手记.html`。
+构建结果同时写入 `outputs/拟股喵喵-A股生存手记.html` 和 `docs/index.html`。
 
 ## 启动平台服务器
 
