@@ -5,12 +5,10 @@ const StartScreen = {
   leaveTimer: null, lineIndex: 0, fxMemory: new Map(),
   resumeKey: 'nigumiao-title-entered',
   lines: [
-    '「只要回到那个数字，你就会离开。对吗？」',
-    '「你的亏损有上限。我们的期待没有。」',
-    '「他们把你的失眠，写进了活跃用户。」',
-    '「风险归你。佣金归我。明天还来吗？」',
-    '「门一直开着。你为什么还在这里？」',
-    '「你在等待反弹。它在等待下一次点击。」'
+    "「先照顾生活，再照顾账户。」",
+    "「红绿会变，别把自己弄丢。」",
+    "「今天的好运，不代表明天的答案。」",
+    "「市场永不缺机会，也永不缺陷阱。」"
   ],
   fxKey(id = LocalProfiles.current?.id) { return 'nigumiao-start-fx-' + (id || 'guest'); },
   readFx(key = this.fxKey()) {
@@ -39,7 +37,7 @@ const StartScreen = {
     const button = $('startEffects');
     button.disabled = !allowed;
     button.setAttribute('aria-pressed', String(enabled));
-    button.innerHTML = !allowed ? '开场演出 · 已停用 <span>○</span>' : enabled ? '开场演出 · 开启 <span>◉</span>' : '开场演出 · 关闭 <span>○</span>';
+    button.innerHTML = !allowed ? '动态效果 · 已停用 <span>○</span>' : enabled ? '动态效果 · 开启 <span>◉</span>' : '动态效果 · 关闭 <span>○</span>';
     button.title = !allowed ? '跟随游戏特效、界面动画与系统减少动态效果设置。' : '关闭眼睛跟随、光影变化与低语轮播；不会更改游戏内的特效设置。';
     if (!this.active || document.hidden || !enabled || this.busy) return;
     this.gate.classList.add('start-playing');
@@ -83,15 +81,15 @@ const StartScreen = {
     $('startContinuePanel').hidden = false;
     $('startIdentityPanel').hidden = true;
     $('startBack').hidden = true;
-    $('localLoginTitle').textContent = '交易室还亮着。';
-    document.querySelector('.start-access .auth-slogan').textContent = '你离开过。它一直在等。';
+    $('localLoginTitle').textContent = '欢迎回来';
+    document.querySelector('.start-access .auth-slogan').textContent = '今天也按自己的节奏来。';
     $('startPlayerAvatar').innerHTML = Presentation.avatar(p);
     $('startPlayerName').textContent = p.name;
     const modes = { endless: '无尽市场', story: '20 日故事', challenge: '无尽挑战', sandbox: '自定义市场' };
     $('startSaveLine').textContent = (modes[game.s.config.mode] || '模拟市场') + ' / 第 ' + game.s.day + ' 日';
     $('startEquity').textContent = '¥ ' + money(game.equity);
-    $('startSaveNote').textContent = game.s.finished ? '这段旅程已结束。可以回来看看，或开启新的一局。' : '进度已就位，等待你的下一次选择。';
-    $('startContinue').firstChild.textContent = game.s.finished ? '回看这段旅程 ' : '继续我的交易日 ';
+    $('startSaveNote').textContent = game.s.finished ? '这段旅程已结束。可以回来看看，或开启新的一局。' : '已保存上次进度';
+    $('startContinue').firstChild.textContent = game.s.finished ? '回看这段旅程 ' : '继续游戏 ';
     $('rememberPlayer').checked = LocalProfiles.read().remembered === p.id;
     $('authError').textContent = '';
   },
@@ -99,8 +97,8 @@ const StartScreen = {
     $('startContinuePanel').hidden = true;
     $('startIdentityPanel').hidden = false;
     $('startBack').hidden = !LocalProfiles.current;
-    $('localLoginTitle').textContent = LocalProfiles.list().length ? '今天，谁来承担风险？' : '给欲望一个名字。';
-    document.querySelector('.start-access .auth-slogan').textContent = '欢迎进入你的下一场交易日。';
+    $('localLoginTitle').textContent = LocalProfiles.list().length ? '选择玩家' : '先认识一下你';
+    document.querySelector('.start-access .auth-slogan').textContent = '取个名字，开始你的交易日。';
     AuthUI.renderPicker();
   },
   focusEntry() {
@@ -218,7 +216,7 @@ const StartScreen = {
     window.addEventListener('keydown', event => this.keydown(event), true);
     document.addEventListener('visibilitychange', () => this.refreshEffects());
     this.reduced.addEventListener('change', () => this.refreshEffects());
-    document.querySelector('.topnav').insertAdjacentHTML('beforeend', '<button type="button" id="navStart"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 10 9-7 9 7v10H3V10Zm6 10v-7h6v7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>起始页面</span></button>');
+    document.querySelector('.topnav').insertAdjacentHTML('beforeend', '<button type="button" id="navStart"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 10 9-7 9 7v10H3V10Zm6 10v-7h6v7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>首页</span></button>');
     $('navStart').onclick = () => this.openFromGame();
     if (LocalProfiles.current && this.shouldResume()) this.closed();
     else AuthUI.showGate();

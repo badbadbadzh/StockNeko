@@ -80,7 +80,7 @@ const economicState=()=>({cash:game.s.cash,rng:game.s.rng,narrativeRng:game.s.na
   await page.emulateMedia({reducedMotion:'reduce'});
   await page.waitForFunction(()=>StartScreen.timer===null);
   assert.equal(await page.evaluate(()=>StartScreen.timer),null);
-  assert.equal(await page.locator('.start-eye').evaluate(el=>getComputedStyle(el).animationName),'none');
+  assert.equal(await page.locator('.start-art').evaluate(el=>getComputedStyle(el).animationName),'none');
   await page.click('#startContinue');
   await page.evaluate(()=>{LocalProfiles.update({fontScale:1});Presentation.applyPreferences();});
   await page.setViewportSize({width:390,height:844});await page.click('#navStart');

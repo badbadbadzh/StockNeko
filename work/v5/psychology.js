@@ -157,7 +157,7 @@ const TradingPsychology = {
   },
   mount() {
     const side = document.querySelector('.side'); if (!side || $('psyPanel')) return;
-    side.insertAdjacentHTML('beforeend', '<section class="psy-panel" id="psyPanel"><div class="psy-panel-head"><span class="micro-label">心理账户 / PSYCH MONITOR</span><span id="psyStressStage">平稳</span></div><div class="psy-stress-row"><b id="psyStressValue">20/100</b><span class="psy-stress-track"><i id="psyStressFill"></i></span></div><p id="psyStressCopy">数字在变化，但还没有接管你的注意力。</p><div class="psy-quick"><span>距历史高点 <b id="psyRecovery">¥0 · +0.0%</b></span><span>连续亏损 <b id="psyStreak">0 次</b></span></div><div class="psy-actions"><button type="button" id="psyArchive">创伤档案</button><button type="button" id="psyAdvisors">顾问室</button></div><small>当前顾问：<b id="psyAdvisorName">白栖</b> · 只观察，不代替你交易</small></section>');
+    side.insertAdjacentHTML('beforeend', '<section class="psy-panel" id="psyPanel"><div class="psy-panel-head"><span class="micro-label">心理账户</span><span id="psyStressStage">平稳</span></div><div class="psy-stress-row"><b id="psyStressValue">20/100</b><span class="psy-stress-track"><i id="psyStressFill"></i></span></div><p id="psyStressCopy">数字在变化，但还没有接管你的注意力。</p><div class="psy-quick"><span>距历史高点 <b id="psyRecovery">¥0 · +0.0%</b></span><span>连续亏损 <b id="psyStreak">0 次</b></span></div><div class="psy-actions"><button type="button" id="psyArchive">创伤档案</button><button type="button" id="psyAdvisors">顾问室</button></div><small>当前顾问：<b id="psyAdvisorName">白栖</b></small></section>');
     $('psyArchive').onclick = () => this.archive(); $('psyAdvisors').onclick = () => this.advisorsPage();
   },
   init() {
