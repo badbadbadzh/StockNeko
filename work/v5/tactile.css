@@ -1,0 +1,52 @@
+/* A lightweight bevel and press travel. No WebGL, cursor tracking or layout changes. */
+.terminal :is(.btn,.trade-submit,.clock-controls button,.input-shell button,.ratios button,.reply-options button,.casual-actions button,.date-actions button,.settings-links button,.review-grid button,.life-tabs button,.chart-zoom button){
+  border-top-color:#82916960;border-bottom-color:#0b1407;
+  background-image:linear-gradient(180deg,#ffffff0b,transparent 60%,#00000015);
+  box-shadow:inset 0 1px 0 #d9edb91c,inset 0 -1px 0 #0005,0 3px 0 #0a1007,0 5px 8px #0003;
+  text-shadow:0 1px 1px #0004;
+  transition:transform .12s ease,box-shadow .12s ease,background-color .16s,border-color .16s;
+}
+.terminal :is(.btn-dark,.trade-submit,#closeBtn){
+  background-image:linear-gradient(180deg,#f5ffca38,transparent 62%,#54702c24);
+  border-top-color:#e0f3b6!important;border-bottom-color:#6d8c40!important;
+  box-shadow:inset 0 1px 0 #f8ffe780,inset 0 -1px 0 #68823c,0 4px 0 #344920,0 7px 12px #0005;
+  text-shadow:0 1px #ffffff26;
+}
+.terminal :is(.btn,.trade-submit,.clock-controls button,.input-shell button,.ratios button,.reply-options button,.casual-actions button,.date-actions button,.settings-links button,.review-grid button,.life-tabs button,.chart-zoom button):hover:not(:disabled){
+  transform:translateY(-1px);box-shadow:inset 0 1px #e5f5c32b,inset 0 -1px #0004,0 4px #101b0c,0 7px 12px #0004;
+}
+.terminal :is(.btn-dark,.trade-submit,#closeBtn):hover:not(:disabled){
+  background-image:linear-gradient(180deg,#f2ffca40,transparent 65%,#708e3433);
+  box-shadow:inset 0 1px #faffdd99,0 5px #405829,0 8px 15px #0006;
+}
+.terminal :is(.btn,.trade-submit,.clock-controls button,.input-shell button,.ratios button,.reply-options button,.casual-actions button,.date-actions button,.settings-links button,.review-grid button,.life-tabs button,.chart-zoom button):active:not(:disabled){
+  transform:translateY(3px);box-shadow:inset 0 2px 3px #0005,0 1px 0 #101b0c;text-shadow:none;
+}
+.terminal .topnav button{
+  background-image:linear-gradient(180deg,#ffffff04,transparent);
+  box-shadow:inset 0 1px #ffffff05,0 2px #090f0866;
+}
+.terminal .topnav button:hover{box-shadow:inset 0 1px #cad8a522,0 3px #091005;transform:translateY(-1px)}
+.terminal .topnav button.active{
+  background-image:linear-gradient(180deg,#efffc240,transparent 70%,#5c792d22)!important;
+  box-shadow:inset 0 1px #f7ffdc88,0 3px #536c32,0 6px 10px #0003;
+}
+.terminal .topnav button:active{transform:translateY(2px);box-shadow:inset 0 2px 3px #0004,0 1px #26371b}
+.terminal .segmented{box-shadow:inset 0 2px 4px #0006,inset 0 -1px #ffffff09}
+.terminal .segmented button.active{box-shadow:inset 0 1px #e5f5b72b,0 2px 3px #0005}
+.terminal :is(.input-shell,.market-filter input,.ticket select,.setting-row select){
+  box-shadow:inset 0 2px 4px #0005,0 1px #c2d8a311;
+}
+.terminal .input-shell:focus-within{box-shadow:inset 0 2px 4px #0005,0 0 0 2px #a5c47118;border-color:#889f65}
+.terminal .switch{box-shadow:inset 0 2px 4px #0006,0 1px #b4c69120}
+.terminal .switch::before{box-shadow:inset 0 1px #f4ffcf4d,0 2px 4px #0007}
+.terminal .panel{box-shadow:inset 0 1px #ffffff07,0 3px 0 #090e08,0 8px 16px #0002}
+.terminal .panel:hover{box-shadow:inset 0 1px #ffffff0c,0 3px 0 #090e08,0 8px 16px #0002}
+.terminal .asset-grid{box-shadow:inset 0 1px #f7ffe015,0 4px 0 #090e08,0 8px 18px #0003}
+.terminal .book-row:hover{box-shadow:inset 2px 0 #d8e9b6;background:#314029;transform:none}
+.terminal :is(button:disabled,.btn-plain,.terminal-tools button){box-shadow:none;text-shadow:none}
+.terminal .btn-plain:hover:not(:disabled){transform:none;box-shadow:none}
+.terminal.effects-off button,.terminal.motion-off button,.terminal.no-animations button{transform:none!important;transition:none!important}
+@media(hover:none){.terminal button:hover:not(:active){transform:none}}
+@media(prefers-reduced-motion:reduce){.terminal button{transform:none!important;transition:none!important}}
+

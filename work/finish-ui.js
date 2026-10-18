@@ -1,0 +1,17 @@
+const fs=require('fs');
+let html=fs.readFileSync('work/index.template.html','utf8'),ui=fs.readFileSync('work/ui.js','utf8');
+html=html.replace('十万元本金，二十个交易日。市场没有剧本，你的选择有后果。','十万元本金，无尽交易日。下一次转折，会发生在哪里？').replace('DAY 01 / 20','DAY 01 / ∞').replace('V2.0 DEVELOPMENT','V2.0 · 无尽试玩版');
+html=html.replace('<button id="navRules">','<button id="navMore">更多</button><button id="navRules">');
+html=html.replace('<button class="btn" id="stepBtn">','<select id="speedSelect" aria-label="自动推进速度"><option value="1">1×</option><option value="2">2×</option><option value="5">5×</option></select><button class="btn" id="stepBtn">');
+html=html.replace('<button type="button" data-bulletin="news">快讯</button>','<button type="button" data-bulletin="news">快讯</button><button type="button" data-bulletin="story">故事</button>');
+html=html.replace('<option value="limit">自定义限价委托</option>','<option value="limit">自定义限价委托</option><option value="market">市价委托（价格保护）</option><option value="stop">止损卖出（条件单）</option><option value="take">止盈卖出（条件单）</option>');
+html=html.replace('<span>委托价格</span>','<span id="priceLabel">委托价格</span>');
+html=html.replace('<span class="small muted">虚构事件</span>','<button class="btn btn-plain" id="newsArchive">新闻归档 ↗</button>');
+ui=ui.replace("localStorage.setItem(KEY,JSON.stringify({game:game.s,selected}));if(typeof SaveManager!=='undefined')SaveManager.write(game,{selected},'autosave','自动存档');","SaveManager.write(game,{selected});localStorage.removeItem(KEY);");
+ui=ui.replace("percent(delta/100000)","percent(delta/Math.max(1,s.initialCash)*100)");
+ui=ui.replace("const s=game.s,pnl=game.equity-s.initialCash,ret=pnl/s.initialCash", "const s=game.s,pnl=game.equity-s.initialCash,ret=pnl/s.initialCash*100");
+const a=ui.indexOf("$('tradeForm').addEventListener('submit'"),b=ui.indexOf("$('watchList').addEventListener",a);
+if(a<0||b<0)throw Error('Cannot locate trade form handler');
+ui=ui.slice(0,a)+"$('tradeForm').addEventListener('submit',e=>{e.preventDefault();submitTicket();});\n"+ui.slice(b);
+ui=ui.replace("render();save();if(saveError)","render();if(saveError)");
+fs.writeFileSync('work/index.template.html',html);fs.writeFileSync('work/ui.js',ui);

@@ -1,0 +1,50 @@
+'use strict';
+const LifeEngine={
+  activities:{
+    study:{name:'书店研习',cost:2,limit:1,xp:18,coins:8,desc:'精力 −2 · 经验 +18 · 喵币 +8 · 学识 +1'},
+    research:{name:'观察手中的线索',cost:2,limit:1,xp:16,coins:10,desc:'精力 −2 · 经验 +16 · 喵币 +10 · 留下一份当下行情笔记'},
+    work:{name:'书店整理兼职',cost:2,limit:2,xp:12,coins:24,desc:'精力 −2 · 经验 +12 · 喵币 +24 · 每日最多 2 次'},
+    rest:{name:'泡茶，离开屏幕',cost:0,limit:1,xp:5,coins:0,desc:'精力 +2（不超过上限）· 压力 −12 · 每日 1 次'},
+  },
+  items:{lamp:{name:'暖光台灯',cost:65,icon:'☀',desc:'每次书店研习额外获得 6 经验。'},plant:{name:'窗边绿植',cost:80,icon:'♧',desc:'从下个交易日起，每日精力上限 +1。'},shelf:{name:'整理书架',cost:90,icon:'▤',desc:'每次书店兼职额外获得 8 喵币。'}},
+  questions:[
+    {q:'今天买入的股票，界面显示“可卖 0 股”。在本局默认规则下应怎么做？',a:['等待下一交易日','反复点击卖出','把数量改成 1 股'],correct:0,why:'本局默认采用 T+1，今天买入的股份要到下一交易日才能卖出。'},
+    {q:'未成交的买入委托冻结了现金，撤单成功后会怎样？',a:['现金直接变成盈利','冻结资金释放','持仓自动增加'],correct:1,why:'撤单释放未成交部分的冻结资金，不会创造盈利或持仓。'},
+    {q:'一条没有来源的“暴涨消息”刷屏，最值得先做的是？',a:['马上满仓','只看转发数量','核对消息来源与日期'],correct:2,why:'热度不等于证据。确认来源与时间，有助于区分事实、观点和过期消息。'},
+    {q:'手账里的浮盈与实际卖出收益不同，原因可能是什么？',a:['卖出价格与费用变化','浮盈一定能兑现','手续费永远为零'],correct:0,why:'浮盈随价格变化，实际成交还要考虑滑点和交易费用。'},
+    {q:'为了少交学费，本金很小时更适合先做哪件事？',a:['用全部资金追热点','用小额交易熟悉规则','不停撤单重下'],correct:1,why:'小额练习让你观察规则和费用。交易次数越多并不代表学得越多。'},
+    {q:'分散到多只同一行业的股票，就一定没有风险了吗？',a:['是，数量多就安全','是，同业只会上涨','否，同业可能一起下跌'],correct:2,why:'共同的行业因素会让多只股票同时波动。分散数量不等于分散风险来源。'},
+    {q:'止损条件触发后，为什么未必立刻卖出？',a:['需要可卖股份和对手盘','触发价就是保证成交价','游戏会保证本金'],correct:0,why:'条件触发只是开始尝试成交，停牌、缺少对手盘等都可能阻碍卖出。'},
+    {q:'连续几次预测正确，下一次应该怎样对待？',a:['视为必胜','仍记录依据和不确定性','把全部本金押进去'],correct:1,why:'过去的结果不能保证下一次正确。保留理由和反例能帮助复盘。'},
+  ],
+  stories:[
+    {npc:'林店长',place:'街角书店',title:'一本被放错位置的旧书',body:'整理书架时，你发现一本夹满便签的旧手记。林店长请你帮忙，今晚想怎么安排？',choices:[{text:'留下来整理索引',coins:18,xp:15,bond:2,result:'你把便签分门别类，店长递来 18 喵币。你们开始聊起各自的阅读习惯。'},{text:'借一本书慢慢读',coins:0,xp:24,knowledge:2,bond:1,result:'你没有赶进度，而是弄懂了两条从前没想明白的概念。学识 +2。'},{text:'聊聊自己的小屋计划',coins:8,xp:12,bond:3,result:'店长给了你 8 喵币的小屋礼券，还记住了你喜欢的布置。'}]},
+    {npc:'阿澄',place:'河边长椅',title:'今天的屏幕有点刺眼',body:'阿澄收起手机，问你要不要一起走一段。输赢之外，你想怎么度过这个下午？',choices:[{text:'一起散步，暂时不看盘',coins:4,xp:16,bond:2,stress:-10,result:'河边很安静。你把注意力放回呼吸，压力 −10。'},{text:'交换各自的失败经历',coins:10,xp:18,bond:3,result:'你们讲起那些误判。没有谁保证下一次成功，但有人愿意认真听。'},{text:'帮忙整理社区公告',coins:20,xp:12,bond:1,result:'公告栏终于清爽了。你收到了 20 喵币的社区感谢券。'}]},
+    {npc:'周编辑',place:'社区电台',title:'一条消息，三种标题',body:'电台需要给一段访谈写标题。周编辑想听听你的选择，这是一场虚构的编辑练习。',choices:[{text:'保留证据与不确定性',coins:14,xp:22,knowledge:1,bond:2,result:'标题没有夸张承诺，但清楚交代了证据与限制。编辑记住了你的认真。'},{text:'先采访另一位当事人',coins:8,xp:18,bond:3,result:'多问了一句，故事有了另一面。你和编辑建立了更好的默契。'},{text:'只做版式，交由编辑审核',coins:22,xp:12,bond:1,result:'你把版式收拾得清楚利落。审核仍由编辑负责，你获得了 22 喵币。'}]},
+    {npc:'林店长',place:'街角书店',title:'雨天的小型读书会',body:'雨越下越大，读书会只来了三个人。店长问你愿不愿意让这个下午继续。',choices:[{text:'当一回主持人',coins:15,xp:20,bond:3,result:'人不多，话却聊得很深。你得到 15 喵币与三份真诚的感谢。'},{text:'负责茶水和座位',coins:20,xp:14,bond:2,result:'你让雨天的小店暖和起来，大家都记得这杯热茶。'},{text:'带来自己的研究笔记',coins:12,xp:28,bond:3,minKnowledge:3,result:'你分享了自己的方法，也认真记下别人不同的看法。'}]},
+    {npc:'阿澄',place:'街区工坊',title:'修好一盏旧台灯',body:'阿澄想把旧物修好送给社区。你们面前摆着工具、图纸和一张空白便签。',choices:[{text:'按图纸检查零件',coins:16,xp:20,knowledge:1,bond:2,result:'一步一步核对，问题终于找到了。耐心比猜测更有用。'},{text:'设计一张赠送卡片',coins:12,xp:16,bond:3,result:'你写下“愿每个晚归的人都有一盏灯”。阿澄小心地把卡片收好。'},{text:'邀请熟悉的朋友协作',coins:25,xp:22,bond:2,minBond:3,result:'你们配合得越来越自然。修好的灯亮起时，整个工坊都笑了。'}]},
+    {npc:'周编辑',place:'社区电台',title:'给未来的自己写封信',body:'电台在征集“一个普通人的今天”。你不需要交出收益数字，只需要一段真实的感受。',choices:[{text:'写一件值得感谢的小事',coins:8,xp:24,bond:2,stress:-5,result:'信读完时，平常的一天好像也有了重量。压力 −5。'},{text:'记录自己犯过的一个错',coins:12,xp:24,knowledge:1,bond:2,result:'错误被写成经验，而不再只是懊恼。学识 +1。'},{text:'帮助剪辑其他人的声音',coins:24,xp:14,bond:1,result:'很多普通人的故事，拼成了这个街区的声音。你得到 24 喵币。'}]},
+  ],
+  ensure(g){if(!g.s.life)g.s.life={version:1,day:g.s.day,energy:6,xp:0,coins:40,knowledge:0,bonds:{},owned:[],display:'none',daily:{},log:[]};const l=g.s.life;if(l.day<g.s.day){l.day=g.s.day;l.energy=this.cap(g);l.daily={};}return l;},
+  cap(g){return 6+(g.s.life?.owned.includes('plant')?1:0);},
+  level(g){return 1+Math.floor(this.ensure(g).xp/100);},
+  title(g){const n=this.level(g);return n>=8?'街区的老朋友':n>=5?'从容的记录者':n>=3?'好奇的探索者':'初来乍到';},
+  guard(g){const l=this.ensure(g);if(g.s.finished)throw Error('本局资金已耗尽，可从“更多”新开一局。');return l;},
+  reward(g,{xp=0,coins=0,knowledge=0,stress=0}={}){const l=this.ensure(g);l.xp+=xp;l.coins+=coins;l.knowledge+=knowledge;g.s.emotions.stress=Math.min(100,Math.max(0,g.s.emotions.stress+stress));this.awards(g);},
+  log(g,title,text){const l=this.ensure(g);l.log.unshift({day:g.s.day,time:g.timeText,title,text});l.log=l.log.slice(0,100);},
+  awards(g){const l=this.ensure(g);for(const [id,ok,name,text] of [['life-level3',this.level(g)>=3,'生活有章法','成长至 Lv.3。'],['life-neighbor',Object.values(l.bonds).some(n=>n>=6),'街角熟面孔','与一位街区角色的熟悉度达到 6。'],['life-home',l.owned.length===3,'小屋焕新','收集三件小屋物品。']])if(ok&&!g.s.achievements.some(a=>a.id===id))g.s.achievements.push({id,name,text,day:g.s.day});},
+  act(g,key,stockId=0){const l=this.guard(g),a=this.activities[key];if(!a)throw Error('未找到这个活动。');if((l.daily[key]||0)>=a.limit)throw Error('今天已完成，下一交易日再来。');if(l.energy<a.cost)throw Error('精力不足，先泡杯茶，或等下一交易日。');if(key==='rest'&&l.energy>=this.cap(g)&&g.s.emotions.stress===0)throw Error('精力已满，状态很好，稍后再来。');if(key==='research'&&!QuoteProvider.isPlayable(g))throw Error('行情源尚未连接，暂时不能生成观察笔记。');const x=g.s.stocks[stockId];if(key==='research'&&!x)throw Error('请先选择股票。');l.energy-=a.cost;l.daily[key]=(l.daily[key]||0)+1;let text='';if(key==='study')text='你整理了一页阅读笔记。学识 +1。';if(key==='work')text='整理好书架与目录，收到兼职报酬。';if(key==='rest'){const before=l.energy;l.energy=Math.min(this.cap(g),l.energy+2);text=`离开屏幕后，你恢复了 ${l.energy-before} 点精力，压力 −12。`;}if(key==='research'){text=`${x.name} ${x.code}：观察时价格 ${(x.price/100).toFixed(2)} 元，日涨跌 ${((x.price/x.prev-1)*100).toFixed(2)}%，当日量 ${x.volume.toLocaleString('zh-CN')} 股。模拟行情记录，不预测下一步涨跌。`;}
+    const xp=a.xp+(key==='study'&&l.owned.includes('lamp')?6:0),coins=a.coins+(key==='work'&&l.owned.includes('shelf')?8:0);this.reward(g,{xp,coins,knowledge:key==='study'?1:0,stress:key==='rest'?-12:0});this.log(g,a.name,text);return `${text} 经验 +${xp}${coins?' · 喵币 +'+coins:''}`;
+  },
+  question(g){return this.questions[((g.s.seed||0)+g.s.day-1)%this.questions.length];},
+  beginQuiz(g){const l=this.guard(g);if(l.daily.quizResult)throw Error('今天已答过题，明天换一个问题。');if(l.daily.quizPending)return;if(l.energy<1)throw Error('需要 1 点精力。');l.energy--;l.daily.quizPending=true;},
+  answer(g,index){const l=this.guard(g),q=this.question(g);if(!l.daily.quizPending||l.daily.quizResult)throw Error('请先开始今日问答。');if(!Number.isInteger(index)||index<0||index>=q.a.length)throw Error('请选择一个答案。');const correct=index===q.correct;l.daily.quizPending=false;l.daily.quiz=1;l.daily.quizResult={index,correct};this.reward(g,{xp:correct?25:8,coins:correct?20:5,knowledge:1});this.log(g,'今日问答',`${correct?'答对了':'收获一条新知识'}：${q.why}`);return correct;},
+  story(g){return this.stories[(g.s.day-1)%this.stories.length];},
+  choose(g,index){const l=this.guard(g),s=this.story(g),c=s.choices[index];if(!c)throw Error('请选择剧情选项。');if(l.daily.story)throw Error('今天的选择已记录。');if(l.energy<1)throw Error('街区拜访需要 1 点精力。');if(l.knowledge<(c.minKnowledge||0)||(l.bonds[s.npc]||0)<(c.minBond||0))throw Error('这个选择需要更多学识或熟悉度。');l.energy--;l.daily.story=1;l.daily.storyResult={index,text:c.result};l.bonds[s.npc]=(l.bonds[s.npc]||0)+c.bond;this.reward(g,c);this.log(g,s.title,c.result);return c.result;},
+  tasks(g){const l=this.ensure(g);return [{id:'learn',name:'给好奇心留点时间',desc:'完成一次研习、问答或行情研究',done:!!(l.daily.study||l.daily.quiz||l.daily.research),coins:12,xp:15},{id:'pause',name:'好好照顾自己',desc:'泡茶休息一次',done:!!l.daily.rest,coins:8,xp:8},{id:'visit',name:'认识一位街区朋友',desc:'完成今日剧情选择',done:!!l.daily.story,coins:15,xp:15}].map(t=>({...t,claimed:(l.daily.claims||[]).includes(t.id)}));},
+  claim(g,id){const l=this.guard(g),t=this.tasks(g).find(t=>t.id===id);if(!t||!t.done||t.claimed)throw Error('任务尚未完成或奖励已领取。');(l.daily.claims||=[]).push(id);this.reward(g,t);this.log(g,'今日计划完成',t.name);return `经验 +${t.xp} · 喵币 +${t.coins}`;},
+  buy(g,id){const l=this.guard(g),item=this.items[id];if(!item)throw Error('未找到这件物品。');if(l.owned.includes(id))throw Error('已经拥有这件物品。');if(l.coins<item.cost)throw Error('喵币不足，完成活动和任务可以获得。');l.coins-=item.cost;l.owned.push(id);l.display=id;this.awards(g);this.log(g,'小屋添新物',item.name+'：'+item.desc);return '已获得'+item.name+'，加成会自动生效。';},
+  decorate(g,id){const l=this.guard(g);if(id!=='none'&&!l.owned.includes(id))throw Error('请先获得这件物品。');l.display=id;},
+  validate(l,day){if(l===undefined)return;const num=(v,max=1e9)=>Number.isSafeInteger(v)&&v>=0&&v<=max;if(!l||l.version!==1||!num(l.day,day)||l.day<1||!num(l.energy,7)||!['xp','coins','knowledge'].every(k=>num(l[k]))||!Array.isArray(l.owned)||new Set(l.owned).size!==l.owned.length||l.owned.some(k=>!Object.hasOwn(this.items,k))||!['none',...l.owned].includes(l.display)||!l.daily||typeof l.daily!=='object'||Array.isArray(l.daily)||!l.bonds||Object.entries(l.bonds).some(([k,v])=>!['林店长','阿澄','周编辑'].includes(k)||!num(v))||!Array.isArray(l.log)||l.log.length>100||l.log.some(x=>!num(x.day,day)||typeof x.title!=='string'||x.title.length>200||typeof x.text!=='string'||x.text.length>2000))throw Error('生活小馆存档数据无效。');for(const k of ['study','research','work','rest','quiz','story'])if(l.daily[k]!==undefined&&!num(l.daily[k],k==='work'?2:1))throw Error('生活活动记录无效。');if(l.daily.claims!==undefined&&(!Array.isArray(l.daily.claims)||l.daily.claims.some(k=>!['learn','pause','visit'].includes(k))))throw Error('任务记录无效。');},
+};
+if(typeof module!=='undefined')module.exports=LifeEngine;

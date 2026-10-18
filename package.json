@@ -1,0 +1,6 @@
+{
+  "name":"stock-meow", "version":"6.0.0", "private":true,
+  "description":"拟股喵喵：本地故事与行情模拟交易平台",
+  "engines":{"node":">=24.0.0"},
+  "scripts":{"build":"node work/build.js","start":"node --env-file-if-exists=.env server/index.js","test":"node --test server/tests/*.test.js","test:ui":"node work/tests/platform.browser.test.js"}
+}
