@@ -1,0 +1,62 @@
+/* Liquid layer: a visible environment behind genuinely translucent panels. */
+body.terminal{background:#d5e3ed;color:#302841;background-image:radial-gradient(ellipse at 85% 12%,#a9bbf4 0,transparent 42%),radial-gradient(ellipse at 15% 58%,#a7dcd9 0,transparent 45%);background-attachment:fixed}
+body.terminal::before{inset:0!important;z-index:-1;background:radial-gradient(ellipse at 65% 25%,#ffd8ec88,transparent 35%),radial-gradient(ellipse at 30% 70%,#c7fabf66,transparent 45%)}
+.liquid-environment{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;contain:strict}
+.liquid-environment i{position:absolute;display:block;width:75vw;height:43vw;border-radius:48%;border:2px solid #ffffff8c;background:linear-gradient(125deg,#a3e5de18 12%,#5d95ce48 28%,#b8a5ed47 45%,#ffe3ef73 60%,#e4ffcd64 72%,#98d2db70);box-shadow:inset 6px 9px 15px #fff9,inset -10px -18px 22px #618ec64a,0 2px 3px #587a9b44,0 15px 45px #7893ba20;transform:rotate(-32deg);left:12%;top:7%}
+.liquid-environment i:nth-child(2){width:66vw;height:28vw;left:54%;top:59%;transform:rotate(-32deg);background:linear-gradient(135deg,#b9daf477,#bdc5ff77,#e9bde866,#d8f9df80);box-shadow:inset 4px 7px 9px #fff9,inset -7px -10px 20px #897ac455,0 12px 35px #688aaf30}
+.liquid-environment i:nth-child(3){width:44vw;height:23vw;left:-17%;top:70%;transform:rotate(-40deg);background:linear-gradient(145deg,#c5f7dd88,#8ebbd899,#b6b6ed55,#f4cce688)}
+body.terminal :is(.panel,.asset,.room-monitor,.psy-panel,.life-hero,.activity-card,.life-tasks,.companion-dock){background:linear-gradient(135deg,#ffffff65,#ffffff18 48%,#e9f2ff39)!important;border:1px solid #ffffffb3!important;backdrop-filter:blur(14px) saturate(145%);-webkit-backdrop-filter:blur(14px) saturate(145%);box-shadow:inset 1px 1px 1px #fffffff2,inset -1px -1px 2px #ffffffb0,inset 0 -7px 13px -10px #91dcff,0 1px 1px #7383a52e,0 10px 24px #42618f15!important;border-radius:26px}
+body.terminal .asset:first-child{background:linear-gradient(125deg,#d9ff8fa6,#b9ec5366 65%,#b4edbd7a)!important}
+body.terminal .chart{background:linear-gradient(125deg,#ffffffc9,#ffffff8f)!important;backdrop-filter:blur(16px) saturate(115%)}
+body.terminal .ticket{background:linear-gradient(145deg,#e7dcff7c,#d8ddff32 48%,#b6e9e34d)!important}
+body.terminal .room-monitor{background:linear-gradient(135deg,#d9e7ff75,#d6cced38)!important}
+body.terminal .psy-panel{background:linear-gradient(135deg,#f4daee66,#dac9ff3b 50%,#b7ece853)!important}
+body.terminal :is(.panel-head,.summary-strip,.table th,.chart-toolbar,.top-of-book){border-color:#ffffff50;background-color:transparent}
+body.terminal .stock-row{border-color:#ffffff36}body.terminal .stock-row.active{background:#e8dbff85}
+body.terminal .panel:hover{box-shadow:inset 1px 1px 2px #fff,inset -1px -1px 2px #ffffffb0,0 12px 26px #42618f1b!important}
+body.terminal :is(.topbar,.terminal-header){background:#eff1ff38;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);border-color:#ffffff6e;box-shadow:inset 0 1px 1px #fff9}
+body.terminal :is(.market-filter input,.market-filter select,.input-shell,.ticket select,.segmented,.side-tabs){background:#f6f3ff70!important;border-color:#ffffffba!important;border-radius:14px;box-shadow:inset 0 1px 3px #6e649414,0 1px 0 #fff9!important}
+body.terminal :is(.v6-nav button,.psy-actions button,.btn,.clock-controls button,.chart-zoom button,.ratios button){background:linear-gradient(135deg,#ffffff8c,#ffffff1c 65%,#dae9ff52)!important;border:1px solid #ffffffb0!important;box-shadow:inset 1px 1px 1px #fff,inset -1px -1px 2px #ffffff70,0 4px 10px #657ba51b!important;color:#644b84;text-shadow:none!important;border-radius:16px}
+body.terminal :is(.v6-nav button,.psy-actions button,.btn,.clock-controls button,.chart-zoom button,.ratios button):hover:not(:disabled){background:linear-gradient(135deg,#fff9,#ffffff49)!important;box-shadow:inset 1px 1px 2px #fff,0 7px 16px #647da32a!important}
+body.terminal #submitOrder,body.terminal .btn-dark,body.terminal .start-screen .start-primary{background:linear-gradient(140deg,#b290ffab,#8648efc9 60%,#a075ff9c)!important;border-color:#dbc6ffb8!important;box-shadow:inset 1px 2px 3px #f9edffc9,inset -1px -2px 3px #c5b2ff96,0 7px 16px #7452b837!important;color:white!important;border-radius:19px;backdrop-filter:blur(8px)}
+body.terminal #submitOrder.sell{background:linear-gradient(140deg,#8de9d5a1,#259d84b8,#b4f4dd85)!important}
+body.terminal #closeBtn{background:linear-gradient(140deg,#e9ffc4a6,#bee87880)!important;color:#506a30!important;border-color:#f4ffda!important}
+body.terminal :is(.ticket-foot,.chart-note,.chart-code,.asset small,.quote-stats,.psy-panel p,.psy-quick,.psy-panel>small,.start-screen .auth-slogan,.start-screen .local-disclaimer){color:#6f6285!important}
+body.terminal .asset label{color:#665b79!important}
+body.terminal .panel-title{color:#4d3c68}
+body.terminal :is(dialog,#modal){background:linear-gradient(135deg,#f2f3ffdb,#e3e8f4b8);backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);border:1px solid #fffd;box-shadow:inset 1px 2px 2px #fff,inset -1px -1px 2px #fffa,0 25px 85px #29476d42;border-radius:30px;transform-origin:50% 35%}
+body.terminal dialog::backdrop{background:#29436642;backdrop-filter:blur(5px)}
+body.terminal :is(.modal-head,.modal-actions){background:#ffffff32!important}
+body.terminal .start-screen.auth-gate{background:#cddfec;background-image:radial-gradient(ellipse at 85% 0,#9ab7ee99,transparent 55%),radial-gradient(ellipse at 15% 95%,#a7e2d199,transparent 50%)}
+body.terminal .start-screen::before{background:radial-gradient(ellipse at 38% 35%,#d7afff55,transparent 50%)}
+body.terminal .start-screen .liquid-environment{position:absolute;z-index:-1}
+body.terminal .start-screen .liquid-environment i{left:28%;top:13%;width:75%;height:62%;transform:rotate(-30deg)}
+body.terminal .start-screen .liquid-environment i:nth-child(2){left:-20%;top:55%;height:33%;width:80%;transform:rotate(-30deg)}
+body.terminal .start-screen .liquid-environment i:nth-child(3){left:72%;top:65%;width:50%;height:30%}
+body.terminal .start-screen .start-access.auth-card{background:linear-gradient(145deg,#ffffff53,#e9efff22 60%,#d6eefb32);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border:1px solid #ffffffc9;border-radius:33px;box-shadow:inset 2px 2px 2px #fff,inset -1px -2px 3px #e5f8ffe6,inset 0 -15px 22px -22px #b3e9ff,0 17px 35px #45658e25}
+body.terminal .start-bottom{background:linear-gradient(130deg,#ffffff47,#ffffff15);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-color:#ffffffb5;box-shadow:inset 1px 1px 1px #fff,inset -1px -1px 2px #fff8,0 9px 22px #627a9e1a}
+body.terminal .start-screen .start-name-field{background:#ffffff5e;border-color:#ffffffc2;box-shadow:inset 0 1px 3px #62799f13,0 1px 1px #fff9}
+body.terminal .start-screen #startEffects{background:linear-gradient(135deg,#ffffff55,#ffffff14);backdrop-filter:blur(12px);border-color:#ffffffa3;color:#79638f;box-shadow:inset 1px 1px 2px white,0 5px 10px #6582a718}
+body.terminal .start-player,body.terminal .start-account{background:#ffffff3a;border:1px solid #ffffff7a;border-radius:19px;box-shadow:inset 0 1px 2px #fff6}
+body.terminal .start-screen .start-primary{border-radius:22px}
+body.terminal .toy-art-label{background:linear-gradient(120deg,#ffffffe6,#e7e5ffc9);box-shadow:inset 0 1px white,0 6px 14px #64749d22;border:1px solid #fff;border-radius:16px}
+/* Transform animations are compositor-only; nothing moves layout or prices. */
+body.terminal button{transition:background-color .2s,box-shadow .2s,border-color .2s;transform-origin:50% 50%;touch-action:manipulation}
+body.terminal button.liquid-press{transform:translateY(2px) scale(.94,.91)!important;box-shadow:inset 0 2px 8px #66519625,0 1px 3px #6c659b18!important;transition:transform 95ms cubic-bezier(.2,.65,.3,1),box-shadow .1s!important}
+body.terminal button.liquid-spring,body.terminal button.liquid-spring:active{transform:none!important;transition:none!important;animation:liquid-release 560ms linear!important}
+@keyframes liquid-release{0%{scale:.94 .91;translate:0 2px}28%{scale:1.035 1.055;translate:0 -2px}48%{scale:.985 .977;translate:0 1px}69%{scale:1.009 1.013;translate:0 -.5px}86%{scale:.997 .995;translate:0 0}100%{scale:1 1;translate:0 0}}
+body.terminal dialog[open].liquid-pop{animation:liquid-dialog-in 480ms linear!important}
+@keyframes liquid-dialog-in{0%{opacity:0;scale:.91;translate:0 20px}45%{opacity:1;scale:1.018;translate:0 -4px}68%{scale:.994;translate:0 1px}100%{opacity:1;scale:1;translate:0 0}}
+body.terminal .tap-ring{display:none!important}
+body.terminal :is(.effects-off,.motion-off){animation:none!important}
+body.terminal.effects-off button.liquid-spring,body.terminal.motion-off button.liquid-spring,body.terminal.no-animations button.liquid-spring,body.terminal.effects-off dialog.liquid-pop,body.terminal.motion-off dialog.liquid-pop{animation:none!important;scale:1!important;translate:0 0!important;transform:none!important}
+body.terminal.effects-off button.liquid-press,body.terminal.motion-off button.liquid-press{transform:none!important}
+body.terminal.effects-off :is(.panel,.asset,.room-monitor,.psy-panel,.life-hero,.activity-card,.life-tasks,.companion-dock,.start-bottom,dialog){backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background-color:#edf0f8!important}
+body.terminal.effects-off .liquid-environment{display:none}
+@media(max-width:900px){body.terminal :is(.panel,.asset,.room-monitor,.psy-panel){backdrop-filter:blur(8px) saturate(130%);-webkit-backdrop-filter:blur(8px) saturate(130%)}.liquid-environment i{width:120vw;height:80vw;top:15%;left:3%}.liquid-environment i:nth-child(2){width:120vw;height:60vw;top:65%;left:-30%}}
+@media(prefers-reduced-motion:reduce){body.terminal button.liquid-spring,body.terminal button.liquid-press,body.terminal dialog.liquid-pop{animation:none!important;transform:none!important;scale:1!important;translate:0 0!important;transition:none!important}}
+/* Do not stretch a short bulletin into an empty sheet of glass. */
+@media(min-width:901px){body.terminal .dashboard>.news{align-self:start;min-height:220px;max-height:320px}}
+body.terminal .start-screen #startEffects{background:linear-gradient(135deg,#ffffff6b,#e3edff35)!important;border-color:#ffffffb5!important;box-shadow:inset 1px 1px 2px white,0 4px 10px #6582a718!important}
+body.terminal .start-screen #startEffects:disabled{background:#ffffff3d!important;opacity:.65}
+body.terminal .start-screen .start-name-field{border-color:#ffffffc2!important}
