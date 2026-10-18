@@ -795,6 +795,89 @@ body.terminal .start-screen #startEffects{background:linear-gradient(135deg,#fff
 body.terminal .start-screen #startEffects:disabled{background:#ffffff3d!important;opacity:.65}
 body.terminal .start-screen .start-name-field{border-color:#ffffffc2!important}
 
+/* Physical controls: raised metal caps sitting in dark, recessed sockets. */
+body.terminal button:not(.stock-row){
+ --cap-top:#f3f6f7;--cap-mid:#cbd2d7;--cap-bottom:#adb7bf;--cap-ink:#35434b;
+ background:linear-gradient(170deg,var(--cap-top),var(--cap-mid) 52%,var(--cap-bottom))!important;
+ color:var(--cap-ink)!important;border:1px solid #7f8e9999!important;
+ border-radius:15px;text-shadow:0 1px 0 #ffffff88!important;
+ box-shadow:inset 0 2px 1px #ffffffd9,inset 1px 0 1px #ffffff80,inset 0 -2px 2px #49596655,0 2px 0 2px #52616c99,0 3px 0 3px #ffffff8c,0 7px 9px #263b4d40!important;
+}
+body.terminal button:not(.stock-row):hover:not(:disabled){filter:brightness(1.06);box-shadow:inset 0 2px 2px #fff,inset 0 -2px 2px #49596655,0 2px 0 2px #52616c99,0 3px 0 3px #ffffff8c,0 9px 12px #263b4d50!important}
+body.terminal button:is(.btn-dark,.start-primary,#submitOrder,#closeBtn),body.terminal .start-screen .start-primary{
+ --cap-top:#59646d;--cap-mid:#343d45;--cap-bottom:#202930;--cap-ink:#c3fff0;
+ text-shadow:0 0 9px #39f5ce66!important;border-color:#17252c!important;
+ box-shadow:inset 0 2px 2px #c4d9df88,inset 0 -2px 3px #0009,0 2px 0 2px #132129bb,0 3px 0 3px #ffffff99,0 8px 12px #1b33494d!important;
+}
+body.terminal #submitOrder.sell{--cap-top:#4b8175;--cap-mid:#2d5c50;--cap-bottom:#203d37;--cap-ink:#e7fff8}
+body.terminal :is(.side-tabs,.segmented,.ratios,.clock-controls){gap:9px;padding:7px;background:#70828b18!important;border-radius:19px;box-shadow:inset 0 2px 4px #33434c26,0 1px 0 #fff9!important}
+body.terminal button:is(.active,[aria-pressed="true"],[aria-selected="true"]):not(.stock-row){--cap-top:#61716f;--cap-mid:#394d4a;--cap-bottom:#253c37;--cap-ink:#8cffe1;text-shadow:0 0 8px #43ffd499!important}
+body.terminal button.liquid-press:not(.stock-row),body.terminal button:not(.stock-row):active{
+ transform:translateY(3px) scale(.97,.95)!important;filter:brightness(.96);
+ box-shadow:inset 0 3px 6px #182e4566,inset 0 -1px 0 #ffffff80,0 0 0 2px #52616c99,0 1px 0 3px #ffffff88!important;
+}
+body.terminal button:disabled{filter:grayscale(.8);opacity:.45;cursor:not-allowed}
+body.terminal button:focus-visible,body.terminal input.switch:focus-visible{outline:3px solid #278e89!important;outline-offset:5px}
+body.terminal input.switch{appearance:none!important;width:52px!important;height:29px!important;flex:none;position:relative;border-radius:20px!important;border:1px solid #889497!important;background:linear-gradient(#374445,#697675)!important;box-shadow:inset 0 3px 5px #0007,0 1px 0 2px #ffffffb3!important;cursor:pointer}
+body.terminal input.switch::before{content:'';position:absolute;width:21px;height:21px;left:3px;top:3px;border-radius:50%;background:linear-gradient(145deg,#fff,#c3cacf);box-shadow:inset 0 1px 1px white,0 2px 3px #0007;transform:none!important;transition:left .22s cubic-bezier(.2,.9,.3,1.2)}
+body.terminal input.switch:checked{background:linear-gradient(#204b49,#316b60)!important;box-shadow:inset 0 3px 5px #0007,inset 0 0 8px #40ffcf36,0 1px 0 2px #ffffffb3!important}
+body.terminal input.switch:checked::before{left:26px}
+body.terminal input.switch::after{content:'';position:absolute;width:5px;height:5px;right:9px;top:11px;border-radius:50%;background:#273a36;box-shadow:none;transform:none!important}
+body.terminal input.switch:checked::after{left:10px;right:auto;background:#67ffdd;box-shadow:0 0 6px 2px #32f6c9a1}
+body.terminal input.switch:disabled{opacity:.4;cursor:not-allowed}
+/* The antagonist lives in absolute darkness, isolated from the glass UI. */
+body.terminal #capitalAlert{background:#000!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;animation:none!important;scale:1!important;translate:none!important;transform:none!important}
+body.terminal #capitalAlert::backdrop{background:#000;backdrop-filter:none}
+#capitalAlert .capital-scene{background:#010303}
+#capitalAlert .capital-scene::before{box-shadow:inset 0 0 16vw 7vw #000e!important;background:linear-gradient(90deg,#000b,transparent 40%,#0008);border:0}
+#capitalAlert .capital-photo{mix-blend-mode:normal;filter:grayscale(.9) contrast(1.65) brightness(.57);mask-image:radial-gradient(ellipse at 50% 43%,#000 25%,#000d 46%,transparent 72%)}
+#capitalAlert .capital-face:has(.capital-photo){left:50%;bottom:-15%;height:125%;transform-origin:50% 40%}
+#capitalAlert.capital-reveal .capital-face{animation:capital-close-cut 1.1s linear both}
+#capitalAlert.capital-reveal .capital-scene::after{background:#becfc7;animation:capital-flash .12s linear both;opacity:.5}
+#capitalAlert.capital-settled .capital-face{opacity:.64;transform:translateX(-50%) scale(1.12)}
+#capitalAlert .capital-receipt{background:#101716;color:#9aa7a1;border-top-color:#632d32;box-shadow:none;transform:rotate(1deg)}
+#capitalAlert .capital-receipt>span,#capitalAlert .capital-receipt>small{color:#74877e}
+#capitalAlert .capital-receipt>b{color:#c97676;border-color:#34423b}
+#capitalAlert .receipt-stamp{color:#a65055;border-color:#7a363c}
+#capitalAlert .capital-caption h2{font-family:var(--sans),sans-serif;color:#c8d1cb;font-size:clamp(23px,3vw,46px);letter-spacing:3px}
+#capitalAlert .capital-caption p{color:#83918b}
+#capitalAlert .capital-scene-header{color:#5e756b;border-color:#19251e;letter-spacing:4px}
+#capitalAlert .capital-controls{background:#030706e8;border-color:#1d2a24}
+body.terminal #capitalAlert .capital-controls button{--cap-top:#35413c;--cap-mid:#1b2823;--cap-bottom:#0d1712;--cap-ink:#bccfc3;border-color:#405449!important;text-shadow:none!important;box-shadow:inset 0 1px #61756b55,inset 0 -2px #000,0 3px 6px #000!important}
+#capitalAlert.capital-blackout .capital-controls{opacity:.55!important}
+@keyframes capital-close-cut{
+ 0%,12%{transform:translateX(-50%) scale(2.15) rotate(-4deg);opacity:1;filter:brightness(1.4)}
+ 13%,24%{transform:translateX(-48%) scale(2.05) rotate(2deg);opacity:1;filter:brightness(1.05)}
+ 25%,57%{transform:translateX(-50%) scale(1.9);opacity:1;filter:brightness(.88)}
+ 58%,76%{transform:translateX(-50%) scale(1.55);opacity:.82;filter:brightness(.7)}
+ 100%{transform:translateX(-50%) scale(1.12);opacity:.64;filter:none}
+}
+@media(max-width:600px){#capitalAlert .capital-face:has(.capital-photo){height:105%;bottom:0}#capitalAlert .capital-receipt{top:15%;opacity:.75}#capitalAlert .capital-caption h2{font-size:calc(24px * var(--text-scale, 1));letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){body.terminal input.switch::before{transition:none}#capitalAlert .capital-face{animation:none!important}}
+body.terminal.motion-off input.switch::before,body.terminal.effects-off input.switch::before{transition:none}
+/* Keep primary actions and selected navigation on the same graphite material. */
+body.terminal #submitOrder,body.terminal #submitOrder.sell,body.terminal #closeBtn,body.terminal .start-screen .start-primary,body.terminal .v6-nav button.active{background:linear-gradient(170deg,var(--cap-top),var(--cap-mid) 52%,var(--cap-bottom))!important;color:var(--cap-ink)!important}
+body.terminal .news-item h4 button{background:none!important;border:0!important;box-shadow:none!important;border-radius:0;text-shadow:none!important;color:inherit!important;text-align:left}
+body.terminal .news-item h4 button:hover{text-decoration:underline;text-underline-offset:3px}
+body.terminal.effects-off button:not(.stock-row):active,body.terminal.motion-off button:not(.stock-row):active{transform:none!important}
+@media(prefers-reduced-motion:reduce){body.terminal button:not(.stock-row):active,body.terminal button.liquid-press:not(.stock-row){transform:none!important}}
+/* Match the existing lavender / mint glass palette; retain physical depth. */
+body.terminal button:not(.stock-row){--cap-top:#faf5ff;--cap-mid:#e1d7f3;--cap-bottom:#c8badd;--cap-ink:#594572;border-color:#b8a5d2aa!important;text-shadow:0 1px #fff9!important;box-shadow:inset 0 2px 1px #ffffffe6,inset 1px 0 1px #ffffff99,inset 0 -2px 2px #9272b440,0 2px 0 2px #b1a1c699,0 3px 0 3px #ffffff8c,0 6px 10px #77618c30!important}
+body.terminal button:not(.stock-row):hover:not(:disabled){box-shadow:inset 0 2px 2px #fff,inset 0 -2px 2px #9272b440,0 2px 0 2px #b1a1c699,0 3px 0 3px #ffffff8c,0 8px 12px #77618c38!important}
+body.terminal button:is(.btn-dark,.start-primary,#submitOrder),body.terminal .start-screen .start-primary,body.terminal button:is(.active,[aria-pressed="true"],[aria-selected="true"]):not(.stock-row){--cap-top:#c9aff5;--cap-mid:#a67ce4;--cap-bottom:#8960c5;--cap-ink:#fff;border-color:#ad8bdb!important;text-shadow:0 1px 2px #76509e55!important;box-shadow:inset 0 2px 2px #efe0ffc9,inset 0 -2px 2px #7044aa55,0 2px 0 2px #a88ac699,0 3px 0 3px #ffffff8c,0 7px 12px #8866ad38!important}
+body.terminal #submitOrder.sell,body.terminal #closeBtn{--cap-top:#d5f4e7;--cap-mid:#a9dcca;--cap-bottom:#8fc5b5;--cap-ink:#305e53;border-color:#9dcfbe!important;text-shadow:0 1px #effffaaa!important;box-shadow:inset 0 2px 2px #f0fff9cc,inset 0 -2px 2px #629c8c44,0 2px 0 2px #9bbfb199,0 3px 0 3px #ffffff8c,0 7px 12px #64948730!important}
+body.terminal button.liquid-press:not(.stock-row),body.terminal button:not(.stock-row):active{box-shadow:inset 0 3px 6px #76518c40,inset 0 -1px 0 #ffffff80,0 0 0 2px #b1a1c699,0 1px 0 3px #ffffff88!important}
+body.terminal :is(.side-tabs,.segmented,.ratios,.clock-controls){background:#c5b6e522!important;box-shadow:inset 0 2px 4px #84729822,0 1px 0 #fff9!important}
+body.terminal input.switch{border-color:#b5a5c8!important;background:linear-gradient(#b1a4c2,#d0c4df)!important;box-shadow:inset 0 2px 4px #78618f50,0 1px 0 2px #ffffffb3!important}
+body.terminal input.switch::before{background:linear-gradient(145deg,#fff,#eae0f7);box-shadow:inset 0 1px 1px white,0 2px 3px #71548a55}
+body.terminal input.switch:checked{background:linear-gradient(#9876c7,#b897e1)!important;box-shadow:inset 0 2px 4px #62478155,inset 0 0 8px #e4cbff36,0 1px 0 2px #ffffffb3!important}
+body.terminal input.switch::after{background:#9986af}
+body.terminal input.switch:checked::after{background:#f4e7ff;box-shadow:0 0 6px 2px #e5c3ffa1}
+body.terminal button:focus-visible,body.terminal input.switch:focus-visible{outline-color:#9063bf!important}
+body.terminal .news-item h4 button,body.terminal .news-item h4 button:hover{box-shadow:none!important;border:0!important}
+/* Horror controls stay dark inside the isolated blackout scene. */
+body.terminal #capitalAlert .capital-controls button{--cap-top:#35413c;--cap-mid:#1b2823;--cap-bottom:#0d1712;--cap-ink:#bccfc3;border-color:#405449!important;box-shadow:inset 0 1px #61756b55,inset 0 -2px #000,0 3px 6px #000!important}
+
 </style>
 </head>
 <body class="auth-locked">
@@ -9634,7 +9717,7 @@ const CapitalHorror = {
     // Cosmetic timing uses crypto, never the market or story RNG.
     const jitter = new Uint16Array(1);
     if (!still) crypto.getRandomValues(jitter);
-    const delay = still ? 0 : 520 + jitter[0] % 381;
+    const delay = still ? 0 : 780 + jitter[0] % 541;
     const reveal = () => {
       if (!d.open || document.hidden) return;
       d.classList.remove('capital-blackout');
@@ -10339,6 +10422,7 @@ const LiquidGlass={
   this.preferences.observe(document.body,{attributes:true,attributeFilter:['class']});
   this.dialogs=new MutationObserver(records=>{for(const {target} of records){target.classList.remove('liquid-pop');if(target.open&&this.allowed())target.classList.add('liquid-pop');}});
   document.querySelectorAll('dialog').forEach(dialog=>{
+   if(dialog.id==='capitalAlert')return; // Horror cuts in; it must never use the friendly modal spring.
    this.dialogs.observe(dialog,{attributes:true,attributeFilter:['open']});
    dialog.addEventListener('animationend',event=>{if(event.animationName==='liquid-dialog-in')dialog.classList.remove('liquid-pop');});
   });

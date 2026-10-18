@@ -159,7 +159,7 @@ const CapitalHorror = {
     // Cosmetic timing uses crypto, never the market or story RNG.
     const jitter = new Uint16Array(1);
     if (!still) crypto.getRandomValues(jitter);
-    const delay = still ? 0 : 520 + jitter[0] % 381;
+    const delay = still ? 0 : 780 + jitter[0] % 541;
     const reveal = () => {
       if (!d.open || document.hidden) return;
       d.classList.remove('capital-blackout');

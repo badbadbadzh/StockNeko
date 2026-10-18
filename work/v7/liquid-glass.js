@@ -21,6 +21,7 @@ const LiquidGlass={
   this.preferences.observe(document.body,{attributes:true,attributeFilter:['class']});
   this.dialogs=new MutationObserver(records=>{for(const {target} of records){target.classList.remove('liquid-pop');if(target.open&&this.allowed())target.classList.add('liquid-pop');}});
   document.querySelectorAll('dialog').forEach(dialog=>{
+   if(dialog.id==='capitalAlert')return; // Horror cuts in; it must never use the friendly modal spring.
    this.dialogs.observe(dialog,{attributes:true,attributeFilter:['open']});
    dialog.addEventListener('animationend',event=>{if(event.animationName==='liquid-dialog-in')dialog.classList.remove('liquid-pop');});
   });
