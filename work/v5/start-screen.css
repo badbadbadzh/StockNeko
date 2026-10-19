@@ -2,9 +2,9 @@
 body.auth-locked { overflow: hidden; filter: none !important; }
 body.auth-locked::after, body.auth-locked #roomEffects, body.auth-locked #atmospherePreview { display: none !important; }
 .auth-locked > .topbar, .auth-locked > .terminal-header, .auth-locked > main { visibility: hidden; }
-.start-screen.auth-gate { --start-ink:#e3e9d4; --start-green:#b3cc88; --start-dim:#84937a; position:fixed; inset:0; z-index:400; display:block; padding:0; overflow:auto; overscroll-behavior:contain; color:var(--start-ink); background:#080e0b; text-align:left; isolation:isolate; scrollbar-color:#3c4c35 #0b110d; }
+.start-screen.auth-gate { --start-ink:#49365e; --start-green:#9672cb; --start-dim:#88709b; position:fixed; inset:0; z-index:400; display:block; padding:0; overflow:auto; overscroll-behavior:contain; color:var(--start-ink); background:#cddfec; text-align:left; isolation:isolate; scrollbar-color:#b8a7d1 #e5e9f5; }
 .start-screen * { box-sizing:border-box; }
-.start-screen::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(ellipse at 48% 42%,#29412730,transparent 65%),linear-gradient(120deg,#101c1230,transparent 55%); }
+.start-screen::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(ellipse at 38% 35%,#d7afff55,transparent 50%); }
 .start-scan { position:fixed; inset:0; z-index:8; pointer-events:none; opacity:.12; background:repeating-linear-gradient(0deg,transparent 0 3px,#000 3px 4px); }
 .start-shell { width:min(1600px,100%); margin:auto; padding:0 clamp(24px,4vw,68px); position:relative; }
 .start-topline { height:104px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid #71876029; }

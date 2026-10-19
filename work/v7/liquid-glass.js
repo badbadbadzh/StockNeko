@@ -7,9 +7,8 @@ const LiquidGlass={
  release(key,bounce=true){const button=this.pressed.get(key);if(!button)return;this.pressed.delete(key);button.classList.remove('liquid-press');if(!bounce||!this.allowed()||!button.isConnected)return;button.classList.add('liquid-spring');this.timers.set(button,setTimeout(()=>{button.classList.remove('liquid-spring');this.timers.delete(button);},580));},
  reset(){for(const button of this.pressed.values())this.clearButton(button);for(const button of this.timers.keys())this.clearButton(button);this.pressed.clear();document.querySelectorAll('.liquid-pop').forEach(el=>el.classList.remove('liquid-pop'));},
  init(){
-  const scenery='<div class="liquid-environment" aria-hidden="true"><i></i><i></i><i></i></div>';
-  document.body.insertAdjacentHTML('afterbegin',scenery);$('authGate').insertAdjacentHTML('afterbegin',scenery);
-  document.addEventListener('pointerdown',event=>{if(event.button!==0)return;this.press(event.target.closest('button'),event.pointerId);},{passive:true});
+  // The glass environment is in HTML so it is present before IndexedDB or JS finishes.
+  document.addEventListener('pointerdown',event=>{if(event.button!==0)return;const button=event.target.closest('button');if(button&&this.allowed()&&!button.disabled){const r=button.getBoundingClientRect();button.style.setProperty('--press-x',((event.clientX-r.left)/r.width-.5)*-7+'deg');button.style.setProperty('--press-y',((event.clientY-r.top)/r.height-.5)*7+'deg');}this.press(button,event.pointerId);},{passive:true});
   window.addEventListener('pointerup',event=>this.release(event.pointerId),{passive:true});
   window.addEventListener('pointercancel',event=>this.release(event.pointerId,false),{passive:true});
   document.addEventListener('keydown',event=>{if(event.repeat||!['Enter',' '].includes(event.key))return;this.press(event.target.closest('button'),'key:'+event.key);});

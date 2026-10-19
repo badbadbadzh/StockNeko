@@ -1,0 +1,22 @@
+/* Glass surfaces are present at first paint; depth does not depend on pointer tracking. */
+html{background:#d5e3ed;color-scheme:light}
+body.terminal{transition:none;background-color:#d5e3ed}
+body.terminal .liquid-environment i{border-color:#ffffffc2;box-shadow:inset 5px 8px 8px #ffffffe0,inset -4px -5px 4px #b1e8ff99,inset -15px -22px 25px #8098c04d,0 2px 3px #5868a440,0 24px 50px #667d9e28}
+body.terminal .liquid-environment i:nth-child(2){box-shadow:inset 3px 7px 7px #fff,inset -5px -9px 12px #a8e6ff99,0 15px 35px #7a6da52b}
+body.terminal :is(.panel,.asset,.room-monitor,.psy-panel,.life-hero,.activity-card,.life-tasks,.companion-dock){background:linear-gradient(145deg,#ffffff8a 0%,#ffffff36 24%,#ffffff13 55%,#e2f5ff52 100%)!important;border:1px solid #ffffffe0!important;box-shadow:inset 1px 2px 2px #fff,inset -1px -2px 2px #c9efffd9,inset 0 9px 15px -12px #fff,inset 0 -10px 14px -12px #9ce8ff,0 2px 1px #8c85ad42,0 12px 25px #64779b24,0 28px 50px -28px #655b9966!important;backdrop-filter:blur(16px) saturate(155%);-webkit-backdrop-filter:blur(16px) saturate(155%)}
+body.terminal .panel:hover{box-shadow:inset 1px 2px 2px #fff,inset -1px -2px 2px #c9efffd9,0 2px 1px #8c85ad42,0 15px 30px #64779b2b!important}
+body.terminal .asset:first-child{background:linear-gradient(130deg,#e4ffb9a6,#c1e88968 60%,#c4edc160)!important}
+body.terminal .chart{background:linear-gradient(140deg,#ffffffe0,#f3f6ffb8)!important}
+body.terminal .ticket{background:linear-gradient(135deg,#e7d9ff85,#e5deff2b 55%,#c1eee55c)!important}
+body.terminal .start-screen .start-access.auth-card{background:linear-gradient(135deg,#ffffff75,#f0e6ff21 55%,#d4f0ff45);border-color:#fff;box-shadow:inset 2px 3px 3px #fff,inset -2px -3px 4px #d5f6ffdc,inset 0 -18px 20px -20px #8fdaf9,0 3px 2px #9ba0bd55,0 22px 45px #6879a12e;backdrop-filter:blur(20px) saturate(160%)}
+body.terminal .start-bottom{box-shadow:inset 1px 2px 2px #fff,inset -1px -2px 2px #c9efffd9,0 2px 1px #8c85ad42,0 12px 25px #64779b24}
+body.terminal button:not(.stock-row){background:linear-gradient(175deg,#ffffff9c 0%,#ffffff29 35%,#ffffff00 48%,#8061ae14 75%,#ffffff45 100%),linear-gradient(165deg,var(--cap-top),var(--cap-mid) 52%,var(--cap-bottom))!important;box-shadow:inset 0 2px 1px #ffffffe6,inset 2px 0 2px #ffffff80,inset -1px -3px 3px #ab8bc866,0 4px 0 #baa6d1,0 5px 0 1px #f6ecffb3,0 10px 14px #7c659d33!important;transform-origin:50% 65%;transition:transform .2s cubic-bezier(.2,.8,.3,1),box-shadow .2s,filter .2s}
+body.terminal button:not(.stock-row):hover:not(:disabled){transform:perspective(650px) translateY(-2px) rotateX(3deg);filter:brightness(1.035);box-shadow:inset 0 2px 2px #fff,inset -1px -3px 3px #ab8bc866,0 5px 0 #baa6d1,0 6px 0 1px #f6ecffb3,0 14px 18px #7c659d38!important}
+body.terminal button.liquid-press:not(.stock-row){transform:perspective(650px) translateY(3px) rotateX(var(--press-y,2deg)) rotateY(var(--press-x,0deg)) scale(.97,.95)!important;box-shadow:inset 0 3px 7px #8661a84d,inset 0 -1px 1px #fff9,0 1px 0 #baa6d1,0 3px 5px #7c659d24!important}
+body.terminal button.liquid-spring:not(.stock-row){transform:none!important;animation:glass-depth-release 560ms linear!important}
+@keyframes glass-depth-release{0%{translate:0 3px;scale:.97 .95;rotate:x -3deg}28%{translate:0 -3px;scale:1.025 1.04;rotate:x 3deg}49%{translate:0 1px;scale:.99 .98;rotate:x -1deg}72%{translate:0 -1px;scale:1.008 1.01;rotate:x .5deg}100%{translate:0 0;scale:1;rotate:x 0deg}}
+body.terminal .news-item h4 button,body.terminal .news-item h4 button:hover{background:none!important;box-shadow:none!important;transform:none!important}
+body.terminal #capitalAlert .capital-controls button{background:linear-gradient(#35413c,#1b2823,#0d1712)!important;box-shadow:inset 0 1px #61756b55,0 2px #000!important}
+body.terminal.effects-off button:not(.stock-row),body.terminal.motion-off button:not(.stock-row),body.terminal.no-animations button:not(.stock-row){animation:none!important;transform:none!important;transition:none!important;scale:1!important;translate:0 0!important;rotate:none!important}
+@media(prefers-reduced-motion:reduce){body.terminal button:not(.stock-row){animation:none!important;transform:none!important;transition:none!important;scale:1!important;translate:0 0!important;rotate:none!important}}
+@media(max-width:900px){body.terminal :is(.panel,.asset,.room-monitor,.psy-panel){backdrop-filter:blur(8px) saturate(140%);-webkit-backdrop-filter:blur(8px) saturate(140%)}}
