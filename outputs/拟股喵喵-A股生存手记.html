@@ -759,7 +759,7 @@ body.terminal :is(.ticket-foot,.chart-note,.chart-code,.asset small,.quote-stats
 body.terminal .asset label{color:#665b79!important}
 body.terminal .panel-title{color:#4d3c68}
 body.terminal :is(dialog,#modal){background:linear-gradient(135deg,#f2f3ffdb,#e3e8f4b8);backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);border:1px solid #fffd;box-shadow:inset 1px 2px 2px #fff,inset -1px -1px 2px #fffa,0 25px 85px #29476d42;border-radius:30px;transform-origin:50% 35%}
-body.terminal dialog::backdrop{background:#29436642;backdrop-filter:blur(5px)}
+body.terminal dialog::backdrop{background:#29436642;backdrop-filter:none;-webkit-backdrop-filter:none}
 body.terminal :is(.modal-head,.modal-actions){background:#ffffff32!important}
 body.terminal .start-screen.auth-gate{background:#cddfec;background-image:radial-gradient(ellipse at 85% 0,#9ab7ee99,transparent 55%),radial-gradient(ellipse at 15% 95%,#a7e2d199,transparent 50%)}
 body.terminal .start-screen::before{background:radial-gradient(ellipse at 38% 35%,#d7afff55,transparent 50%)}
@@ -779,8 +779,14 @@ body.terminal button{transition:background-color .2s,box-shadow .2s,border-color
 body.terminal button.liquid-press{transform:translateY(2px) scale(.94,.91)!important;box-shadow:inset 0 2px 8px #66519625,0 1px 3px #6c659b18!important;transition:transform 95ms cubic-bezier(.2,.65,.3,1),box-shadow .1s!important}
 body.terminal button.liquid-spring,body.terminal button.liquid-spring:active{transform:none!important;transition:none!important;animation:liquid-release 560ms linear!important}
 @keyframes liquid-release{0%{scale:.94 .91;translate:0 2px}28%{scale:1.035 1.055;translate:0 -2px}48%{scale:.985 .977;translate:0 1px}69%{scale:1.009 1.013;translate:0 -.5px}86%{scale:.997 .995;translate:0 0}100%{scale:1 1;translate:0 0}}
-body.terminal dialog[open].liquid-pop{animation:liquid-dialog-in 480ms linear!important}
-@keyframes liquid-dialog-in{0%{opacity:0;scale:.91;translate:0 20px}45%{opacity:1;scale:1.018;translate:0 -4px}68%{scale:.994;translate:0 1px}100%{opacity:1;scale:1;translate:0 0}}
+/* Never fall back to the legacy window-in animation after liquid-pop is removed.
+   Keep the glass/backdrop layers stationary; only their contents gently enter. */
+body.terminal dialog[open]{animation:none!important}
+body.terminal dialog[open].liquid-pop{animation:none!important}
+body.terminal dialog[open].liquid-pop>*{animation:liquid-dialog-in 220ms cubic-bezier(.2,.8,.3,1)}
+@keyframes liquid-dialog-in{from{translate:0 6px}to{translate:0 0}}
+body.terminal.effects-off dialog.liquid-pop>*,body.terminal.motion-off dialog.liquid-pop>*,body.terminal.no-animations dialog.liquid-pop>*{animation:none!important}
+@media(prefers-reduced-motion:reduce){body.terminal dialog.liquid-pop>*{animation:none!important}}
 body.terminal .tap-ring{display:none!important}
 body.terminal :is(.effects-off,.motion-off){animation:none!important}
 body.terminal.effects-off button.liquid-spring,body.terminal.motion-off button.liquid-spring,body.terminal.no-animations button.liquid-spring,body.terminal.effects-off dialog.liquid-pop,body.terminal.motion-off dialog.liquid-pop{animation:none!important;scale:1!important;translate:0 0!important;transform:none!important}
