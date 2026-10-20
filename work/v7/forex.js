@@ -16,4 +16,3 @@ const FXMarket={
  show(){if(!this.ready)this.ensureRates();$('tradePage').hidden=true;$('forexPage').hidden=false;document.querySelectorAll('.topnav button').forEach(x=>x.classList.remove('active'));$('navForex').classList.add('active');this.paint()},hide(){$('forexPage').hidden=true;$('tradePage').hidden=false;document.querySelectorAll('.topnav button').forEach(x=>x.classList.remove('active'));$('navTrade').classList.add('active')},
  wrapRender(){const old=render;render=()=>{this.wallet.CNY=game.s.cash/100;old();if(this.ready){const total=this.totalCny()+game.marketValue;const delta=total-game.s.initialCash/100;$('totalAsset').textContent='¥ '+this.fmt(total);$('profit').textContent=(delta>=0?'+':'')+this.fmt(delta);$('returnRate').textContent='收益率 '+(delta/game.s.initialCash*100).toFixed(2)+'%';}if(!$('forexPage').hidden)this.paint()}},
 };
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>FXMarket.init());else FXMarket.init();
