@@ -926,6 +926,43 @@ body.terminal.effects-off button:not(.stock-row),body.terminal.motion-off button
 body.terminal .fx-currency.active{--cap-top:#c9a8ef;--cap-mid:#a477db;--cap-bottom:#8960b5;color:white}
 @media(max-width:1000px){.fx-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'chart' 'exchange' 'overview' 'wallet' 'history'}}
 
+/* A layered portrait inside the established lavender/mint glass shell. */
+#modal:has(.pet-customizer){width:min(920px,calc(100vw - 28px));max-width:none;max-height:92dvh}
+.pet-editor-intro{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 18px}.pet-kicker{font:calc(9px * var(--text-scale, 1)) var(--mono);letter-spacing:2px;color:#977bb2}.pet-editor-intro p{margin:0;color:#82708f;font-size:calc(12px * var(--text-scale, 1))}
+.pet-customizer{display:grid;grid-template-columns:minmax(230px,.82fr) minmax(0,1.18fr);gap:26px;align-items:start}
+.pet-custom-preview{position:sticky;top:0;overflow:hidden;isolation:isolate;border:1px solid #fff;border-radius:25px;background:radial-gradient(ellipse at 15% 85%,#b6e0d9a8,transparent 60%),linear-gradient(135deg,#fff9,#c7bbf36b);box-shadow:inset 0 2px 2px #fff,inset 0 -2px 3px #effffe,0 12px 28px #8871b122}
+.pet-custom-preview::before{content:'';position:absolute;z-index:-1;width:240px;height:240px;top:85px;left:50%;transform:translateX(-50%);border-radius:50%;border:1px solid #fff9;box-shadow:0 0 0 20px #ffffff24,0 0 0 42px #ffffff18}
+.pet-preview-top{display:flex;justify-content:space-between;padding:17px 20px;font-size:calc(10px * var(--text-scale, 1));color:#89749d;letter-spacing:1px}
+#petPreviewStage{height:345px;padding:0 16px;position:relative;overflow:hidden}
+.pet-art{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 8px 5px #44334b20)}
+.pet-art .pet-ink-line{fill:none;stroke:#20212c;stroke-opacity:.35;stroke-width:1.8}.pet-art .pet-seam{fill:none;stroke:#282b38;stroke-opacity:.6;stroke-width:2}.pet-art .pet-knit{fill:none;stroke:#fff;stroke-opacity:.24;stroke-width:2.5}
+.pet-preview-bottom{position:relative;padding:15px 20px 16px;background:#ffffff7a;border-top:1px solid #ffffffb3;text-align:center;backdrop-filter:blur(8px)}
+.pet-preview-bottom strong{font-size:calc(20px * var(--text-scale, 1));color:#51415f;font-weight:500;letter-spacing:3px;overflow-wrap:anywhere}.pet-preview-bottom p{font-size:calc(11px * var(--text-scale, 1));min-height:20px;color:#8c769e;margin:5px 0 12px}
+.pet-preview-hint{display:block;text-align:center;font-size:calc(9px * var(--text-scale, 1));color:#9b84aa;padding:10px;background:#ffffff42;letter-spacing:1px}
+.pet-custom-controls{min-width:0}.pet-name-label{font-size:calc(11px * var(--text-scale, 1));color:#6e567f;display:flex;align-items:center;gap:15px;margin:0 0 19px}.pet-name-label input{flex:1;min-width:0;border:1px solid #fff;border-radius:13px;padding:10px 12px;color:#59436e;background:#ffffff82;font:calc(13px * var(--text-scale, 1)) inherit}
+.pet-choice-group{border:0;border-top:1px solid #e0d5ec;padding:12px 0 16px;margin:0;min-width:0}.pet-choice-group legend{font-size:calc(11px * var(--text-scale, 1));color:#82659a;padding:0 8px 0 0;letter-spacing:1px}
+.pet-choice-list{display:flex;flex-wrap:wrap;gap:10px}.pet-choice-list .pet-choice{padding:8px 12px;font-size:calc(11px * var(--text-scale, 1));min-height:34px;display:flex;gap:7px;align-items:center}
+.pet-colors .pet-choice i{display:inline-block;width:18px;height:18px;flex-shrink:0;background:var(--swatch);border:2px solid #fffd;border-radius:50%;box-shadow:0 1px 4px #3f274438}
+.pet-editor-actions{display:flex;gap:10px;margin-top:5px;flex-wrap:wrap}.pet-preferences{margin-top:22px;padding:16px 0;display:flex;gap:18px;justify-content:space-between;align-items:center;border-top:1px solid #dcd0e9;border-bottom:1px solid #dcd0e9;flex-wrap:wrap;color:#77618a;font-size:calc(12px * var(--text-scale, 1))}
+.pet-preferences input{accent-color:#9770be;width:17px;height:17px;vertical-align:middle}.pet-preferences select{background:#fff8;border:1px solid #fff;border-radius:10px;padding:6px 12px;color:inherit;margin-left:5px}.pet-save-note{font-size:calc(10px * var(--text-scale, 1));color:#9984ab;line-height:1.8;margin:12px 0 0}.pet-editor-footer{align-items:center;gap:12px}.pet-editor-footer span{margin-right:auto;font-size:calc(11px * var(--text-scale, 1));color:#947ca6}.pet-profile-link{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;padding:14px;border:1px solid #fff;border-radius:16px;background:#fff4}
+.desktop-pet{position:fixed;left:210px;top:calc(100vh - 248px);width:140px;z-index:65;touch-action:auto;isolation:isolate}
+.desktop-pet[hidden],body.auth-locked .desktop-pet,body:has(#capitalAlert[open]) .desktop-pet{display:none!important}
+body:has(dialog[open]) .desktop-pet{visibility:hidden}
+.desktop-pet[data-size="small"]{width:110px}.desktop-pet[data-size="large"]{width:178px}
+.pet-dock-toolbar{display:flex;justify-content:space-between;align-items:center;padding:0 7px;margin-bottom:-5px;position:relative;z-index:1}
+.pet-dock-toolbar button{font-size:calc(15px * var(--text-scale, 1));width:29px;height:27px;padding:0}.pet-dock-toolbar #petDragHandle{cursor:grab;touch-action:none;user-select:none}.pet-dock-toolbar #petDragHandle:active{cursor:grabbing}
+#desktopPetStage{width:100%;aspect-ratio:350/425;display:block;padding:0;line-height:0;cursor:pointer}
+body.terminal #desktopPetStage,body.terminal #desktopPetStage:hover,body.terminal #desktopPetStage:active,body.terminal #desktopPetStage.liquid-press{border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;filter:none!important;transform:none!important;text-shadow:none!important;animation:none!important;scale:1!important;translate:none!important}
+.desktop-pet-caption{display:flex;gap:6px;justify-content:space-between;align-items:center;background:linear-gradient(140deg,#ffffffdf,#e4d5ffb3);border:1px solid #fff;box-shadow:inset 0 1px #fff,0 5px 16px #7f698932;border-radius:16px;padding:7px 10px;backdrop-filter:blur(9px)}
+.desktop-pet-caption strong{font-size:calc(11px * var(--text-scale, 1));font-weight:500;color:#6b4f7d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.desktop-pet-caption button{font-size:calc(9px * var(--text-scale, 1));padding:3px 6px;white-space:nowrap}
+.pet-speech{position:absolute;left:0;bottom:100%;margin:0 0 10px;width:min(185px,100%);padding:12px;border:1px solid #fff;border-radius:16px 16px 16px 4px;background:#f8f3fff2;color:#795c8d;font-size:calc(11px * var(--text-scale, 1));line-height:1.7;box-shadow:0 6px 18px #60417720;overflow-wrap:anywhere}
+.desktop-pet.collapsed{width:76px!important}.desktop-pet.collapsed #desktopPetStage,.desktop-pet.collapsed .desktop-pet-caption,.desktop-pet.collapsed .pet-speech{display:none}.desktop-pet.collapsed .pet-dock-toolbar{background:#ede4faf0;border:1px solid #fff;border-radius:16px;padding:7px;margin:0;gap:5px}
+.pet-art .pet-eye-open{transform-box:fill-box;transform-origin:center;transition:transform 65ms ease-out,opacity 65ms}.pet-art .pet-eye-closed,.pet-art .pet-happy-mouth{opacity:0}
+.pet-blink .pet-eye-open,.pet-happy .pet-eye-open{transform:scaleY(.06);opacity:0}.pet-blink .pet-eye-white,.pet-happy .pet-eye-white{opacity:0}.pet-blink .pet-eye-closed,.pet-happy .pet-eye-closed{opacity:1}.pet-happy .pet-neutral-mouth{opacity:0}.pet-happy .pet-happy-mouth{opacity:1}
+body:is(.effects-off,.motion-off,.no-animations) .pet-art .pet-eye-open{transition:none;transform:none;opacity:1}body:is(.effects-off,.motion-off,.no-animations) .pet-art .pet-eye-white{opacity:1}body:is(.effects-off,.motion-off,.no-animations) .pet-art .pet-eye-closed{opacity:0}
+@media(prefers-reduced-motion:reduce){.pet-art .pet-eye-open{transition:none;transform:none!important;opacity:1!important}.pet-art .pet-eye-white{opacity:1!important}.pet-art .pet-eye-closed{opacity:0!important}}
+@media(max-width:700px){#modal:has(.pet-customizer){width:calc(100vw - 16px);max-height:94dvh;border-radius:22px}.pet-customizer{grid-template-columns:1fr;gap:18px}.pet-custom-preview{position:relative;top:auto}.pet-editor-intro{display:block}.pet-editor-intro p{margin-top:6px}#petPreviewStage{height:240px}.pet-preview-top{padding:11px 16px}.pet-preview-bottom{padding:10px}.pet-preview-bottom strong{font-size:calc(17px * var(--text-scale, 1))}.pet-preview-hint{display:none}.pet-choice-list{gap:9px}.pet-choice-list .pet-choice{min-height:40px;padding:9px 11px}.pet-editor-footer span{width:100%}.pet-preferences{gap:14px}.desktop-pet{max-width:135px}.desktop-pet[data-size="small"]{width:100px}.desktop-pet[data-size="large"]{width:150px;max-width:150px}}
+
 </style>
 </head>
 <body class="auth-locked terminal toy-ui">
@@ -9197,6 +9234,38 @@ if(typeof module!=='undefined')module.exports=StockGame;
 
 
 'use strict';
+// Profile-scoped appearance; independent of market RNG, game slots and story NPCs.
+const PetModel={
+ defaults:{name:'墨墨',hairColor:'ink',hairStyle:'long',eyes:'ink',accessory:'none',outfit:'hoodie',outfitColor:'charcoal',enabled:true,collapsed:false,size:'normal',position:null},
+ options:{
+  hairColor:{ink:['墨黑','#373841'],rose:['莓粉','#bb7396'],silver:['月银','#bdc4d4'],mint:['薄荷','#699b94'],cream:['奶茶','#c5a881'],violet:['雾紫','#9086b7']},
+  hairStyle:{long:['长直发'],bob:['短波波'],twin:['双马尾']},
+  eyes:{ink:['石墨','#777c8e'],violet:['紫晶','#ad8bdf'],amber:['琥珀','#e6b16c'],aqua:['青蓝','#7fc7cf'],rose:['蔷薇','#d889a9']},
+  accessory:{none:['无发饰'],bow:['蝴蝶结'],clip:['星星夹'],bell:['铃铛结']},
+  outfit:{hoodie:['宽松卫衣'],sailor:['水手领'],sweater:['针织衫']},
+  outfitColor:{charcoal:['炭灰','#484957'],lilac:['薰衣草','#b2a0d4'],cream:['奶油','#ded3c2'],sage:['鼠尾草','#91b4a6']},
+  size:{small:['小'],normal:['标准'],large:['大']}
+ },
+ normalize(raw={}){
+  const x={...this.defaults};if(!raw||typeof raw!=='object')return x;
+  for(const [k,values] of Object.entries(this.options))if(Object.hasOwn(values,raw[k]))x[k]=raw[k];
+  for(const k of ['enabled','collapsed'])if(typeof raw[k]==='boolean')x[k]=raw[k];
+  if(typeof raw.name==='string'&&raw.name.trim()&&[...raw.name.trim()].length<=12&&!/[\u0000-\u001f\u007f]/.test(raw.name))x.name=raw.name.trim();
+  if(raw.position&&['x','y'].every(k=>Number.isFinite(raw.position[k])&&raw.position[k]>=0&&raw.position[k]<=1))x.position={x:raw.position.x,y:raw.position.y};
+  return x;
+ },
+ validate(patch,previous={}){
+  if(!patch||typeof patch!=='object'||Array.isArray(patch))throw Error('桌宠配置无效。');
+  for(const [k,values] of Object.entries(this.options))if(patch[k]!==undefined&&!Object.hasOwn(values,patch[k]))throw Error('桌宠选项无效：'+k);
+  for(const k of ['enabled','collapsed'])if(patch[k]!==undefined&&typeof patch[k]!=='boolean')throw Error('桌宠显示设置无效。');
+  if(patch.name!==undefined&&(typeof patch.name!=='string'||!patch.name.trim()||[...patch.name.trim()].length>12||/[\u0000-\u001f\u007f]/.test(patch.name)))throw Error('桌宠名字需要 1–12 个字。');
+  if(patch.position!==undefined&&patch.position!==null&&(!patch.position||!['x','y'].every(k=>Number.isFinite(patch.position[k])&&patch.position[k]>=0&&patch.position[k]<=1)))throw Error('桌宠位置无效。');
+  return this.normalize({...this.normalize(previous),...patch});
+ }
+};
+if(typeof module!=='undefined')module.exports=PetModel;
+
+'use strict';
 // Local profile selection is deliberately not online authentication.
 const LocalProfiles={
   key:'nigumiao-local-players-v1', sessionKey:'nigumiao-player-session', current:null, error:'',
@@ -9210,7 +9279,7 @@ const LocalProfiles={
     data.profiles.push(p);this.write(data);return p;
   },
   rename(value){if(!this.current)throw Error('请先选择玩家。');const data=this.read(),name=this.validName(value);if(data.profiles.some(p=>p.id!==this.current.id&&p.name.toLocaleLowerCase()===name.toLocaleLowerCase()))throw Error('本机已有这个名称。');const p=data.profiles.find(p=>p.id===this.current.id);p.name=name;this.write(data);this.current=p;return p;},
-  update(patch){if(!this.current)throw Error('请先选择玩家。');const data=this.read(),p=data.profiles.find(p=>p.id===this.current.id);if(!p)throw Error('未找到玩家档案。');const next={...p};if(patch.name!==undefined){next.name=this.validName(patch.name);if(data.profiles.some(x=>x.id!==p.id&&x.name.toLocaleLowerCase()===next.name.toLocaleLowerCase()))throw Error('本机已有这个名称。');}if(patch.bio!==undefined){next.bio=String(patch.bio).trim();if([...next.bio].length>100)throw Error('个性签名最多 100 个字。');}if(patch.avatar!==undefined){if(patch.avatar!==''&&(!/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(patch.avatar)||patch.avatar.length>150000))throw Error('头像格式无效，请重新选择图片。');next.avatar=patch.avatar;}if(patch.fontScale!==undefined){if(![.85,1,1.15,1.3].includes(patch.fontScale))throw Error('文字大小无效。');next.fontScale=patch.fontScale;}if(patch.effects!==undefined){if(typeof patch.effects!=='boolean')throw Error('特效设置无效。');next.effects=patch.effects;}if(patch.atmosphere!==undefined){if(!['off','subtle','intense'].includes(patch.atmosphere))throw Error('氛围设置无效。');next.atmosphere=patch.atmosphere;}for(const key of ['interfaceMotion','ambienceSound','jumpscare','capitalFlash'])if(patch[key]!==undefined){if(typeof patch[key]!=='boolean')throw Error('特效设置无效。');next[key]=patch[key];}if(patch.partnerTitle!==undefined){if(!['恋人','男朋友','女朋友'].includes(patch.partnerTitle))throw Error('请选择一个称谓。');next.partnerTitle=patch.partnerTitle;}data.profiles[data.profiles.indexOf(p)]=next;this.write(data);this.current=next;return next;},
+  update(patch){if(!this.current)throw Error('请先选择玩家。');const data=this.read(),p=data.profiles.find(p=>p.id===this.current.id);if(!p)throw Error('未找到玩家档案。');const next={...p};if(patch.name!==undefined){next.name=this.validName(patch.name);if(data.profiles.some(x=>x.id!==p.id&&x.name.toLocaleLowerCase()===next.name.toLocaleLowerCase()))throw Error('本机已有这个名称。');}if(patch.bio!==undefined){next.bio=String(patch.bio).trim();if([...next.bio].length>100)throw Error('个性签名最多 100 个字。');}if(patch.avatar!==undefined){if(patch.avatar!==''&&(!/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(patch.avatar)||patch.avatar.length>150000))throw Error('头像格式无效，请重新选择图片。');next.avatar=patch.avatar;}if(patch.fontScale!==undefined){if(![.85,1,1.15,1.3].includes(patch.fontScale))throw Error('文字大小无效。');next.fontScale=patch.fontScale;}if(patch.effects!==undefined){if(typeof patch.effects!=='boolean')throw Error('特效设置无效。');next.effects=patch.effects;}if(patch.atmosphere!==undefined){if(!['off','subtle','intense'].includes(patch.atmosphere))throw Error('氛围设置无效。');next.atmosphere=patch.atmosphere;}for(const key of ['interfaceMotion','ambienceSound','jumpscare','capitalFlash'])if(patch[key]!==undefined){if(typeof patch[key]!=='boolean')throw Error('特效设置无效。');next[key]=patch[key];}if(patch.partnerTitle!==undefined){if(!['恋人','男朋友','女朋友'].includes(patch.partnerTitle))throw Error('请选择一个称谓。');next.partnerTitle=patch.partnerTitle;}if(patch.pet!==undefined){const model=typeof PetModel!=='undefined'?PetModel:require('../v7/pet-model');next.pet=model.validate(patch.pet,next.pet);}data.profiles[data.profiles.indexOf(p)]=next;this.write(data);this.current=next;return next;},
   select(id,remember){const data=this.read(),p=data.profiles.find(p=>p.id===id);if(!p)throw Error('未找到这位玩家。');this.validName(p.name);sessionStorage.setItem(this.sessionKey,id);data.remembered=remember?id:null;this.write(data);return p;},
   logout(){const data=this.read();data.remembered=null;this.write(data);sessionStorage.removeItem(this.sessionKey);this.current=null;},
   prefix(id){return 'nigumiao-player-'+id+'-';},
@@ -10629,6 +10698,135 @@ FXMarket.init=function(){
  this.paint();
 };
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>FXMarket.init());else FXMarket.init();
+
+'use strict';
+// Layered SVG keeps every hair / garment / iris combination crisp and independently editable.
+const PetArt={
+ svg(config){
+  const p=PetModel.normalize(config),hair=PetModel.options.hairColor[p.hairColor][1],iris=PetModel.options.eyes[p.eyes][1],cloth=PetModel.options.outfitColor[p.outfitColor][1];
+  const long=`<path d="M87 104Q46 166 48 261L23 400Q50 392 67 350L60 411 110 417 131 273 247 272 261 417 304 405 293 356Q309 391 330 394L308 255Q315 148 267 103Z"/><path class="pet-ink-line" d="M77 175Q58 282 43 371M96 226 82 391M284 167Q299 294 311 366M268 254 279 398"/>`;
+  const bob=`<path d="M83 113Q44 143 47 233L41 274Q62 290 97 279L123 247 242 253Q284 285 309 270L302 218Q303 142 272 111Z"/><path class="pet-ink-line" d="M59 186 56 264M285 181 296 255"/>`;
+  const twin=`<path d="M70 130Q27 117 23 175L30 230 14 368Q43 351 51 322L40 386Q83 365 88 295L94 172ZM276 130Q319 112 330 163L327 232 343 372Q318 364 307 324L319 388Q279 371 266 285L257 165Z"/><path class="pet-ink-line" d="M45 166Q67 241 35 347M299 162Q282 256 321 354"/><path d="M60 141 87 146M265 147 290 139" stroke="#dba8c1" stroke-width="10"/>`;
+  const hoodie=`<path d="M123 274Q89 280 67 308L46 425H304L284 308Q264 281 225 274L212 291 140 292Z"/><path fill="#fff" fill-opacity=".1" d="M82 306Q103 276 126 285L144 301 128 322ZM217 291Q244 274 273 302L232 322Z"/><path class="pet-seam" d="M117 281Q99 293 103 305Q168 362 241 306Q246 293 227 282M116 305Q176 344 229 306M89 321 78 412M261 320 273 412M118 393Q176 375 236 393L242 416H110Z"/><path d="M136 323 129 368M212 324 219 369" fill="none" stroke="#e5dfed" stroke-width="2.3"/><path d="M127 362 126 374M221 364 222 376" stroke="#292b38" stroke-width="4"/><path d="m169 351 7-9 7 9-7 8Z" fill="#c5b0df" stroke="none"/>`;
+  const sailor=`<path d="M126 275 84 295 59 324 48 425H302L290 324 265 295 223 275 195 297H154Z"/><path fill="#faf3eb" d="M126 276 94 296 143 343 175 317 210 344 258 296 222 275 175 300Z"/><path class="pet-seam" d="m109 294 35 35 30-20 36 21 33-35M85 326 77 410M268 326 278 411"/><path fill="#af86be" d="M173 318Q147 302 142 314L147 341 174 329 180 363 197 357 180 327Q208 345 213 332L211 308Q196 306 179 318Z"/><circle cx="176" cy="323" r="7" fill="#d1b9df"/><path class="pet-seam" d="M174 367V416"/>`;
+  const sweater=`<path d="M127 269 110 290Q73 294 62 329L48 425H303L288 329Q281 300 236 290L220 269Z"/><path fill="#fff" fill-opacity=".14" d="M127 269Q172 282 220 269L229 298Q172 323 118 298Z"/><path class="pet-seam" d="M127 271 121 299M140 274 137 303M155 276 153 306M172 277V307M190 275 192 305M206 273 211 303M219 271 224 299M80 332 73 408M268 332 281 408M62 409H291"/><path class="pet-knit" d="m111 329 7 6-7 6 7 6-7 6 7 6-7 6 7 6-7 6 7 6M236 329l-7 6 7 6-7 6 7 6-7 6 7 6-7 6 7 6-7 6M162 338l10 7 10-7m-20 19 10 7 10-7m-20 19 10 7 10-7"/>`;
+  let accessory='';
+  if(p.accessory==='bow')accessory=`<g transform="translate(266 116) rotate(18)" fill="#bf94c3" stroke="#65516f" stroke-width="2"><path d="M0 0Q-33-28-37-9L-35 12Q-33 23 0 5 29 23 34 10L36-11Q31-25 0 0Z"/><path d="M-3 6-14 36 0 30 7 37 9 9"/><circle cx="0" cy="3" r="7" fill="#ead2e7"/></g>`;
+  if(p.accessory==='clip')accessory=`<g stroke="#bea161" stroke-width="2" fill="#ffe4a4"><path d="m266 117 4 9 10 1-8 7 2 10-9-5-9 5 2-10-7-7 10-1Z"/><path d="M249 146 273 151" stroke="#e4d7f4" stroke-width="4"/></g>`;
+  if(p.accessory==='bell')accessory=`<g transform="translate(267 123)" stroke="#7d5879" stroke-width="2"><path d="M0 0-26-13-2-15 2-3 22-17 26-2 4 4" fill="#cb98b1"/><path d="M0 2V19"/><circle cy="26" r="12" fill="#efd199" stroke="#a58a5e"/><path d="M-8 27H8M0 27V34" stroke="#a58a5e"/><circle cy="26" r="2" fill="#a58a5e"/></g>`;
+  const eye=(x,flip)=>`<g transform="translate(${x} 185)${flip?' scale(-1 1)':''}"><path class="pet-eye-white" d="M-29-10Q-6-22 27-5L22 14Q1 29-23 13Z" fill="#fffaf5" stroke="#b6a2ac" stroke-width="1.3"/><g class="pet-eye-open"><path d="M-15-13Q2-20 17-8L17 11Q2 30-14 13Z" fill="${iris}" stroke="#41404c" stroke-width="1.7"/><path d="M-13 8Q1 22 15 9L12 18Q0 27-10 17Z" fill="#fff" opacity=".25"/><ellipse cx="2" cy="2" rx="5" ry="13" fill="#302d3b"/><ellipse cx="-7" cy="-6" rx="4" ry="6" fill="#fff" opacity=".9"/><circle cx="10" cy="10" r="2" fill="#fff"/></g><path d="M-30-10Q-7-19 27-5L23 0Q-6-10-29-5Z" fill="#32313d" stroke="#32313d" stroke-width="2"/><path d="m-26-8-6-5M-22-10-5-6" stroke="#32313d" stroke-width="2.5"/><path class="pet-eye-closed" d="M-28-3Q-5 12 25 0" stroke="#454052" stroke-width="3.5" fill="none"/><path d="M-23 17Q-3 25 20 16" fill="none" stroke="#b49fa8" stroke-width="1.4"/></g>`;
+  return `<svg class="pet-art" viewBox="0 0 350 425" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="--pet-hair:${hair};--pet-cloth:${cloth}">
+   <g stroke="#292a35" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <g class="pet-back-hair" fill="${hair}">${p.hairStyle==='bob'?bob:p.hairStyle==='twin'?twin:long}</g>
+    <path d="M143 237Q151 268 136 280L112 291Q175 342 238 291L214 281Q201 264 210 237Z" fill="#f5e9e3"/>
+    <path d="M149 247Q175 274 205 251L204 266Q177 290 147 267Z" fill="#c4a5b0" fill-opacity=".35" stroke="none"/>
+    <g class="pet-garment" fill="${cloth}">${{hoodie,sailor,sweater}[p.outfit]}</g>
+    <g class="pet-face-group">
+     <path d="M88 71Q69 29 51 22 49 76 83 109M255 67Q291 27 304 31 310 78 273 112" fill="${hair}" stroke-width="3"/>
+     <path d="m60 39 10 45 17 12 4-18Z M294 47l-24 34 1 16 20-21Z" fill="#d4b9c4" stroke="#69616c" stroke-width="1.6"/>
+     <path d="m67 62 10 4-1 10 12 2M289 64l-10 7 1 10-10 3" stroke="#eee7ec" stroke-width="5"/>
+     <path d="M76 153Q62 98 105 65 163 22 231 59 291 82 280 160L264 234Q237 269 177 285 124 273 90 237Z" fill="#f7eee8"/>
+     <path d="M79 150 88 211Q92 240 122 258L177 280Q120 280 85 240Z" fill="#bfa5af" fill-opacity=".25" stroke="none"/>
+     <path d="M105 156Q122 148 145 155M210 155Q231 150 249 161" stroke="#71626d" stroke-width="2" fill="none"/>
+     <g class="pet-eyes">${eye(124,false)}${eye(231,true)}</g>
+     <path d="m173 213-3 8 4 1" fill="none" stroke="#c3a8ae" stroke-width="1.4"/>
+     <path class="pet-neutral-mouth" d="M165 244Q174 240 184 245" fill="none" stroke="#98818f" stroke-width="1.9"/>
+     <path class="pet-happy-mouth" d="M163 239Q173 251 185 239" fill="none" stroke="#98818f" stroke-width="2"/>
+     <path d="M98 225 116 230M237 229 255 224" stroke="#dba7b6" stroke-width="7" opacity=".4"/>
+     <path d="m97 225-2 5m9-3-2 5m9-3-2 5m128-3-2 5m9-7-2 5m9-7-2 5" stroke="#c48d9d" stroke-width="1"/>
+    </g>
+    <g class="pet-front-hair" fill="${hair}">
+     <path d="M76 178Q60 130 81 86 106 24 179 33 247 25 277 91 295 136 278 196L269 228 250 246 260 218 240 229Q255 205 255 170 240 163 220 141L202 95Q211 148 236 182 207 174 185 143L162 85Q166 135 189 174 163 170 145 142L128 100Q128 148 108 174L101 146 91 188Z"/>
+     <path d="M89 121Q75 163 82 207L106 238 91 239 113 253Q90 256 78 233L72 250Q57 224 68 178Z"/>
+     <path d="M267 115Q283 166 273 211L249 244 267 240 248 260Q279 250 285 231L283 255Q302 229 289 177Z"/>
+     <path class="pet-ink-line" d="M102 94Q111 61 154 48M154 71Q148 108 170 151M184 65Q180 108 211 151M218 63Q246 80 258 128M104 109 91 164M74 184Q68 220 88 241M280 178Q289 211 268 240"/>
+     <path d="M94 92Q115 52 151 49M199 48Q235 51 252 87" fill="none" stroke="#fff" stroke-opacity=".11" stroke-width="5"/>
+    </g>
+    <g class="pet-accessory-layer">${accessory}</g>
+   </g>
+  </svg>`;
+ }
+};
+
+'use strict';
+const CharacterCustomizer={
+ blinkTimer:null,eyeTimer:null,talkTimer:null,draft:null,drag:null,
+ state(){return PetModel.normalize(LocalProfiles.current?.pet)},
+ petHtml(x=this.state()){return PetArt.svg(x)},
+ group(key,label){
+  const colors=['hairColor','eyes','outfitColor'].includes(key);
+  return `<fieldset class="pet-choice-group"><legend>${label}</legend><div class="pet-choice-list ${colors?'pet-colors':''}">${Object.entries(PetModel.options[key]).map(([value,[name,hex]])=>`<button type="button" class="pet-choice" data-pet-key="${key}" data-pet-value="${value}" aria-pressed="false">${colors?`<i style="--swatch:${hex}" aria-hidden="true"></i>`:''}<span>${name}</span></button>`).join('')}</div></fieldset>`;
+ },
+ open(){
+  if(!LocalProfiles.current)return AuthUI.showGate();
+  this.draft=this.state();
+  modal('桌宠衣橱',`<div class="pet-editor-intro"><span class="pet-kicker">YOUR LITTLE COMPANION</span><p>给今天的陪伴，换一种模样。</p></div><div class="pet-customizer"><section class="pet-custom-preview" aria-label="猫娘外观预览"><div class="pet-preview-top"><span>实时试穿</span><span>✦</span></div><div id="petPreviewStage"></div><div class="pet-preview-bottom"><strong id="petPreviewName"></strong><p id="petPreviewText"></p><button type="button" class="btn" id="petPreviewPat">摸摸头 ♡</button></div><span class="pet-preview-hint">猫耳 · 微困眼神 · 今天也在</span></section><div class="pet-custom-controls"><label class="pet-name-label" for="petName">她的名字<input id="petName" maxlength="24" autocomplete="off" placeholder="1–12 个字"></label>${this.group('hairStyle','01 / 发型')}${this.group('hairColor','02 / 发色')}${this.group('eyes','03 / 眼睛')}${this.group('accessory','04 / 发饰')}${this.group('outfit','05 / 穿着')}${this.group('outfitColor','06 / 衣服颜色')}<div class="pet-editor-actions"><button type="button" class="btn" id="petRandomize">试试新搭配 ↻</button><button type="button" class="btn" id="petResetLook">恢复参考造型</button></div></div></div><div class="pet-preferences"><label><input type="checkbox" id="petEnabled"> 在页面显示桌宠</label><label for="petSize">显示大小 <select id="petSize">${Object.entries(PetModel.options.size).map(([k,[v]])=>`<option value="${k}">${v}</option>`).join('')}</select></label><button type="button" class="btn" id="petResetPosition">位置归位</button></div><p class="pet-save-note">拖动桌宠上方的把手可移动位置；关闭界面动画后停止眨眼。外观随本地玩家保存。</p><p id="petCustomizerError" class="auth-error" role="alert"></p><div class="modal-actions pet-editor-footer"><span id="petSaveState" role="status">试穿中 · 保存后应用</span><button type="button" class="btn" data-modal="close">取消</button><button type="button" class="btn btn-dark" id="savePetCustomization">保存并陪伴我 ↗</button></div>`);
+  $('petName').value=this.draft.name;$('petEnabled').checked=this.draft.enabled;$('petSize').value=this.draft.size;
+  document.querySelectorAll('[data-pet-key]').forEach(b=>b.onclick=()=>{this.draft[b.dataset.petKey]=b.dataset.petValue;this.paintChoices()});
+  $('petName').oninput=()=>{this.draft.name=$('petName').value;$('petPreviewName').textContent=this.draft.name||'给她起个名字'};
+  $('petEnabled').onchange=()=>{this.draft.enabled=$('petEnabled').checked};$('petSize').onchange=()=>{this.draft.size=$('petSize').value};
+  $('petRandomize').onclick=()=>{for(const key of ['hairStyle','hairColor','eyes','accessory','outfit','outfitColor']){const keys=Object.keys(PetModel.options[key]);this.draft[key]=keys[Math.floor(Math.random()*keys.length)]}this.paintChoices()};
+  $('petResetLook').onclick=()=>{for(const key of ['hairStyle','hairColor','eyes','accessory','outfit','outfitColor'])this.draft[key]=PetModel.defaults[key];this.paintChoices()};
+  $('petResetPosition').onclick=()=>{this.draft.position=null;this.draft.collapsed=false;$('petSaveState').textContent='保存后，桌宠回到默认位置。'};
+  $('petPreviewPat').onclick=()=>this.pat(true);$('savePetCustomization').onclick=()=>this.save();this.paintChoices();this.scheduleBlink();
+ },
+ paintChoices(){
+  document.querySelectorAll('[data-pet-key]').forEach(b=>{const on=b.dataset.petValue===this.draft[b.dataset.petKey];b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))});
+  $('petPreviewStage').innerHTML=this.petHtml(this.draft);$('petPreviewName').textContent=this.draft.name;
+  $('petPreviewText').textContent=[PetModel.options.hairStyle[this.draft.hairStyle][0],PetModel.options.outfit[this.draft.outfit][0]].join(' / ');
+ },
+ save(){try{const pet=PetModel.validate(this.draft);LocalProfiles.update({pet});this.apply();closeModal();toast('猫娘的新造型已保存。')}catch(e){$('petCustomizerError').textContent=e.message}},
+ persist(patch){try{LocalProfiles.update({pet:patch});return true}catch(e){toast('桌宠设置未保存：'+e.message,true);return false}},
+ apply(){
+  const p=this.state(),root=$('desktopPet');if(!root)return;
+  root.hidden=!LocalProfiles.current||!p.enabled;root.classList.toggle('collapsed',p.collapsed);root.dataset.size=p.size;
+  $('desktopPetStage').innerHTML=this.petHtml(p);$('desktopPetName').textContent=p.name;
+  $('desktopPetToggle').textContent=p.collapsed?'＋':'−';$('desktopPetToggle').setAttribute('aria-label',p.collapsed?'展开桌宠':'收起桌宠');$('desktopPetToggle').setAttribute('aria-expanded',String(!p.collapsed));
+  this.position();this.scheduleBlink();
+ },
+ bounds(){const r=$('desktopPet').getBoundingClientRect();return {minX:8,minY:8,maxX:Math.max(8,innerWidth-r.width-8),maxY:Math.max(8,innerHeight-r.height-8)}},
+ position(){
+  if($('desktopPet').hidden||document.body.classList.contains('auth-locked'))return;
+  const p=this.state(),b=this.bounds();
+  const x=p.position?b.minX+p.position.x*(b.maxX-b.minX):(innerWidth>900?Math.min(210,b.maxX):b.minX),y=p.position?b.minY+p.position.y*(b.maxY-b.minY):b.maxY;
+  this.moveTo(x,y);
+ },
+ moveTo(x,y){const b=this.bounds();$('desktopPet').style.left=Math.max(b.minX,Math.min(b.maxX,x))+'px';$('desktopPet').style.top=Math.max(b.minY,Math.min(b.maxY,y))+'px';},
+ savePosition(){const b=this.bounds(),r=$('desktopPet').getBoundingClientRect();const position={x:(r.left-b.minX)/Math.max(1,b.maxX-b.minX),y:(r.top-b.minY)/Math.max(1,b.maxY-b.minY)};this.persist({position});},
+ canAnimate(){const pet=this.state();return !!LocalProfiles.current&&(!!$('petPreviewStage')||pet.enabled&&!pet.collapsed)&&!document.hidden&&!document.body.matches('.auth-locked,.effects-off,.no-animations,.motion-off')&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&(!$('modal').open||!!$('petPreviewStage'))&&!$('capitalAlert')?.open},
+ clearEyes(){clearTimeout(this.eyeTimer);document.querySelectorAll('.pet-blink,.pet-happy').forEach(el=>el.classList.remove('pet-blink','pet-happy'));},
+ blink(duration=150){
+  if(!this.canAnimate())return;
+  this.clearEyes();for(const id of ['desktopPetStage','petPreviewStage'])$(id)?.classList.add('pet-blink');
+  this.eyeTimer=setTimeout(()=>this.clearEyes(),duration);
+ },
+ scheduleBlink(){
+  clearTimeout(this.blinkTimer);this.clearEyes();if(!this.canAnimate())return;
+  this.blinkTimer=setTimeout(()=>{this.blink();this.blinkTimer=setTimeout(()=>this.scheduleBlink(),220)},2700+Math.random()*3300);
+ },
+ pat(preview=false){
+  const lines=['嗯？……再摸一下也可以。','不是在发呆，只是在陪你。','今天也一起慢慢来，喵。','手好暖……'];const text=lines[Math.floor(Math.random()*lines.length)];
+  if(preview){$('petPreviewText').textContent=text;}else{$('petSpeech').textContent=text;$('petSpeech').hidden=false;clearTimeout(this.talkTimer);this.talkTimer=setTimeout(()=>{$('petSpeech').hidden=true},3200)}
+  if(this.canAnimate()){clearTimeout(this.blinkTimer);this.clearEyes();for(const id of ['desktopPetStage','petPreviewStage'])$(id)?.classList.add('pet-happy');this.eyeTimer=setTimeout(()=>{this.clearEyes();this.scheduleBlink()},900)}
+ },
+ init(){
+  const icon='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 10-1-7 7 4h2l7-4-1 7c4 8-18 8-14 0ZM8 12h1m6 0h1m-6 3 2 1 2-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  $('navLife').insertAdjacentHTML('afterend','<button type="button" id="navPet">'+icon+'<span>桌宠衣橱</span></button>');$('navPet').onclick=()=>this.open();
+  document.body.insertAdjacentHTML('beforeend',`<aside class="desktop-pet" id="desktopPet" aria-label="猫娘桌宠" hidden><p class="pet-speech" id="petSpeech" role="status" hidden></p><div class="pet-dock-toolbar"><button type="button" id="petDragHandle" aria-label="拖动桌宠；也可用方向键移动" title="拖动 / 方向键移动">⠿</button><button type="button" id="desktopPetToggle" aria-label="收起桌宠" aria-expanded="true">−</button></div><button type="button" id="desktopPetStage" class="pet-stage-button" aria-label="摸摸猫娘的头"></button><div class="desktop-pet-caption"><strong id="desktopPetName"></strong><button type="button" id="petDressUp" title="打开桌宠衣橱">换装 ↗</button></div></aside>`);
+  $('desktopPetToggle').onclick=()=>{if(this.persist({collapsed:!this.state().collapsed}))this.apply()};$('desktopPetStage').onclick=()=>this.pat();$('petDressUp').onclick=()=>this.open();
+  const handle=$('petDragHandle');handle.onpointerdown=e=>{if(e.button!==0)return;const r=$('desktopPet').getBoundingClientRect();this.drag={id:e.pointerId,x:e.clientX,y:e.clientY,left:r.left,top:r.top};handle.setPointerCapture(e.pointerId);e.preventDefault()};
+  handle.onpointermove=e=>{if(this.drag?.id!==e.pointerId)return;this.moveTo(this.drag.left+e.clientX-this.drag.x,this.drag.top+e.clientY-this.drag.y)};
+  handle.onpointerup=e=>{if(this.drag?.id!==e.pointerId)return;this.drag=null;this.savePosition()};handle.onpointercancel=()=>{this.drag=null;this.position()};
+  handle.onkeydown=e=>{const delta={ArrowLeft:[-16,0],ArrowRight:[16,0],ArrowUp:[0,-16],ArrowDown:[0,16]}[e.key];if(!delta)return;e.preventDefault();e.stopPropagation();const r=$('desktopPet').getBoundingClientRect();this.moveTo(r.left+delta[0],r.top+delta[1]);this.savePosition()};
+  const profile=Presentation.profile.bind(Presentation);Presentation.profile=()=>{profile();if(!LocalProfiles.current)return;$('modalBody').insertAdjacentHTML('beforeend','<div class="pet-profile-link"><span>猫娘桌宠</span><button type="button" class="btn" id="openPetCustomizer">打开衣橱 ↗</button></div>');$('openPetCustomizer').onclick=()=>this.open()};
+  const settings=TerminalSettings.open.bind(TerminalSettings);TerminalSettings.open=()=>{settings();const links=document.querySelector('#modalBody .settings-links');if(!links)return;links.insertAdjacentHTML('beforeend','<button type="button" id="settingsPet">桌宠衣橱<span>换装、眨眼、显示与大小 ↗</span></button>');$('settingsPet').onclick=()=>this.open()};
+  this.preferences=new MutationObserver(()=>{this.scheduleBlink();this.position()});this.preferences.observe(document.body,{attributes:true,attributeFilter:['class']});
+  this.dialogState=new MutationObserver(()=>this.scheduleBlink());this.dialogState.observe($('modal'),{attributes:true,attributeFilter:['open']});
+  document.addEventListener('visibilitychange',()=>this.scheduleBlink());matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',()=>this.scheduleBlink());
+  window.addEventListener('resize',()=>this.position());$('modal').addEventListener('close',()=>this.scheduleBlink());this.apply();
+ }
+};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>CharacterCustomizer.init());else CharacterCustomizer.init();
 </script>
 <script>
 LocalVault.start().then(()=>{const source=document.getElementById('game-ui-source'),script=document.createElement('script');script.textContent=source.textContent;source.remove();document.body.appendChild(script);}).catch(error=>{document.getElementById('authGate').inert=false;document.getElementById('authError').textContent='读取本地存档失败：'+error.message+'。请保留浏览器数据并重新打开。';document.getElementById('authForm').hidden=true;document.getElementById('showCreatePlayer').hidden=true;const retry=document.createElement('button');retry.textContent='重新读取';retry.className='btn';retry.onclick=()=>location.reload();document.getElementById('authError').after(retry);const choose=document.createElement('button');choose.textContent='选择其他玩家';choose.className='btn';choose.onclick=()=>{LocalProfiles.logout();location.reload();};retry.after(choose);});
