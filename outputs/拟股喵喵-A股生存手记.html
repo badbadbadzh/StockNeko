@@ -930,6 +930,168 @@ body.terminal .fx-currency.active{--cap-top:#c9a8ef;--cap-mid:#a477db;--cap-bott
 .fx-chart-tools [hidden]{display:none!important}
 #fxUpdated{overflow-wrap:anywhere}
 
+/* Forex-only glass detailing. Motion is finite and tied to a user action. */
+#forexPage{--fx-violet:#8054c6;--fx-deep:#413354;--fx-soft:#736583;--fx-edge:#ffffffd9;--fx-mint:#69c6ba}
+#forexPage .fx-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+#forexPage #fxChartPair{font-family:var(--mono);font-size:calc(13px * var(--text-scale, 1));font-weight:600;letter-spacing:.8px;-webkit-text-stroke:0}
+body.terminal #forexPage .fx-grid{gap:20px}
+body.terminal #forexPage .panel{border-radius:25px;isolation:isolate;min-width:0}
+body.terminal #forexPage .panel-head{height:auto;min-height:53px;padding:13px 21px;border-color:#ffffffa6;gap:12px}
+body.terminal #forexPage .fx-chart-panel{background:linear-gradient(150deg,#fffdfaf0,#f4efffda 45%,#e0f5f0bd)!important;box-shadow:inset 0 2px 2px #fff,inset 0 -2px 3px #bcece9,0 3px 2px #ada3c22e,0 18px 35px #6f639522!important;position:relative}
+body.terminal #forexPage .fx-chart-panel::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse at 100% 0,#d9c8ff5c,transparent 48%),radial-gradient(ellipse at 2% 100%,#c5eee861,transparent 40%)}
+#forexPage .fx-chart-summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 25px 17px;min-width:0}
+#forexPage :is(.fx-chart-summary,.fx-chart-stats,.fx-periods)[hidden]{display:none!important}
+#forexPage .fx-chart-summary>div{min-width:0}
+#forexPage .fx-chart-eyebrow{display:block;color:var(--fx-soft);font-size:calc(11px * var(--text-scale, 1));letter-spacing:.3px;margin-bottom:7px}
+#forexPage .fx-chart-quote{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;line-height:1.2}
+#forexPage #fxHeroRate{font-family:var(--mono);font-size:calc(42px * var(--text-scale, 1));font-weight:700;letter-spacing:-2px;font-variant-numeric:tabular-nums;color:var(--fx-deep)}
+#forexPage #fxHeroUnit{font:calc(12px * var(--text-scale, 1)) var(--mono);color:var(--fx-soft);letter-spacing:1px}
+#forexPage #fxPeriodChange{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:11px;color:var(--fx-soft);font-size:calc(10px * var(--text-scale, 1))}
+#forexPage #fxPeriodChange b{font:600 11px var(--mono);padding:4px 7px;border-radius:7px;background:#ffffff9c;border:1px solid white}
+#forexPage #fxPeriodChange.up b{color:#b14765;background:#fbe7ee9c;border-color:#fff5f9}
+#forexPage #fxPeriodChange.down b{color:#247765;background:#def2e99c;border-color:#f4fff9}
+#forexPage #fxPeriodChange>span{color:var(--fx-soft)}
+#forexPage #fxHeroDate{display:block;font:calc(10px * var(--text-scale, 1)) var(--mono);color:var(--fx-soft);margin-top:8px;text-align:right}
+#forexPage .fx-chart-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid #ffffffeb;border-radius:20px;padding:7px 10px;background:#ffffff7a;font-size:calc(10px * var(--text-scale, 1));color:#695585;white-space:nowrap;box-shadow:inset 0 1px #fff,0 2px 5px #836d9b0d}
+#forexPage .fx-chart-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:#9470ce;box-shadow:0 0 0 3px #a98bda15}
+#forexPage .fx-chart-tools{gap:9px;align-items:center;padding:9px 23px 14px}
+#forexPage .fx-chart-tools select{font-size:calc(11px * var(--text-scale, 1));min-height:35px;padding:8px 10px;border:1px solid #ffffffeb;box-shadow:inset 0 1px #fff,0 2px 5px #6757800c;background:#ffffffa3;border-radius:12px;outline-offset:3px}
+#forexPage #fxQuoteMode{color:#6c469f;background:linear-gradient(155deg,#ffffffd9,#e9ddf9a1)}
+#forexPage .fx-periods{display:flex;align-items:center;padding:4px;gap:3px;background:#a29ab416;border:1px solid #ffffffa1;border-radius:13px;box-shadow:inset 0 1px 3px #75658112}
+body.terminal #forexPage .fx-periods button{font:calc(11px * var(--text-scale, 1)) var(--mono);min-width:35px;min-height:29px;padding:6px 8px;background:transparent!important;border:1px solid transparent!important;border-radius:9px;color:#7b6d8b!important;box-shadow:none!important;text-shadow:none!important;transform:none!important;transition:background .18s,color .18s,box-shadow .18s}
+body.terminal #forexPage .fx-periods button:hover:not(:disabled){background:#ffffff66!important;box-shadow:inset 0 1px #ffffffa1!important;filter:none;transform:none!important}
+body.terminal #forexPage .fx-periods button:is(.active,[aria-pressed=true]){background:linear-gradient(155deg,#fff,#f1e9ff)!important;color:#7649ad!important;border-color:#fff!important;box-shadow:inset 0 1px #fff,0 2px 5px #69518321!important}
+body.terminal #forexPage .fx-periods button.liquid-press{background:#e6d9f4!important;box-shadow:inset 0 2px 4px #82669421!important}
+body.terminal #forexPage #fxRetry{font-size:calc(10px * var(--text-scale, 1));padding:8px 10px;margin-left:auto;border-radius:11px;min-height:35px;box-shadow:inset 0 1px #fff,0 2px 0 #c6b7da,0 5px 9px #7b66951a!important}
+#forexPage #fxModeNote{color:#897995;font-size:calc(10px * var(--text-scale, 1));line-height:1.6;margin:0 24px 7px}
+#forexPage .fx-plot-wrap{position:relative;margin:0 13px;isolation:isolate;border-radius:17px;touch-action:pan-y}
+#forexPage #fxChart{display:block;width:100%;height:auto;padding:0;overflow:visible;color:#8c7c9c;outline-offset:-3px;touch-action:pan-y}
+#forexPage #fxChart:focus-visible{outline:2px solid #b091dc;border-radius:16px}
+#forexPage #fxChart .fx-grid-line{stroke:#a89cb5;stroke-opacity:.19;stroke-dasharray:3 5;stroke-width:1;vector-effect:non-scaling-stroke}
+#forexPage #fxChart .fx-axis-label{fill:#8b7d97;font-family:var(--mono);font-size:calc(11px * var(--text-scale, 1));letter-spacing:.05px}
+#forexPage #fxChart .fx-baseline{stroke:#b1a3c2;stroke-opacity:.5;stroke-dasharray:4 5;stroke-width:1;vector-effect:non-scaling-stroke}
+#forexPage #fxChart .fx-price-line{fill:none;stroke:url(#fxLineGradient) #895cc8;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#forexPage #fxChart .fx-price-halo{fill:none;stroke:#a882db;stroke-width:8;stroke-opacity:.11;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#forexPage #fxChart .fx-area{opacity:.8;pointer-events:none}
+#forexPage #fxChart .fx-last-dot{fill:#895cc8;stroke:white;stroke-width:2;vector-effect:non-scaling-stroke}
+#forexPage #fxChart .fx-last-halo{fill:#a58ad3;fill-opacity:.16}
+#forexPage #fxChart .fx-guide{stroke:#9d82b9;stroke-width:1;stroke-opacity:.65;stroke-dasharray:4 4;vector-effect:non-scaling-stroke;pointer-events:none}
+#forexPage #fxChart .fx-hover-point{fill:#8c5fc8;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke;pointer-events:none}
+#forexPage #fxChart .fx-chart-empty{font-family:'Microsoft YaHei','PingFang SC',sans-serif;font-size:calc(13px * var(--text-scale, 1));fill:#8b789d;letter-spacing:.2px}
+#forexPage .fx-chart-tooltip{position:absolute;z-index:3;pointer-events:none;min-width:146px;max-width:calc(100% - 12px);padding:11px 13px;color:#514060;background:linear-gradient(135deg,#fffdfdf5,#f5eefcf2);border:1px solid #fff;border-radius:13px;box-shadow:inset 0 1px #fff,0 5px 18px #5c477c24;font-size:calc(11px * var(--text-scale, 1));line-height:1.6;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#forexPage .fx-chart-tooltip[hidden]{display:none!important}
+#forexPage .fx-chart-tooltip small{display:block;color:#8a799a;font:calc(10px * var(--text-scale, 1)) var(--mono);margin-bottom:4px}
+#forexPage .fx-chart-tooltip strong{font:600 15px var(--mono);font-variant-numeric:tabular-nums}
+#forexPage .fx-chart-tooltip span{display:block;color:#7d6c8b;font-size:calc(10px * var(--text-scale, 1))}
+#forexPage .fx-chart-tooltip #fxTooltipDate{display:block;color:#8a799a;font:calc(10px * var(--text-scale, 1)) var(--mono);margin-bottom:5px}
+#forexPage .fx-chart-tooltip #fxTooltipRate{display:block;font:600 15px var(--mono);line-height:1.5}
+#forexPage .fx-chart-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:10px 24px 0;padding:14px 0 13px;border-top:1px solid #ffffffd9;border-bottom:1px solid #ffffffc7}
+#forexPage .fx-chart-stats>div{min-width:0;padding:0 14px;border-right:1px solid #a694bd21}
+#forexPage .fx-chart-stats>div:first-child{padding-left:0}
+#forexPage .fx-chart-stats>div:last-child{border:0;padding-right:0}
+#forexPage .fx-chart-stats span{display:block;color:#8a7a99;font-size:calc(10px * var(--text-scale, 1));margin-bottom:4px}
+#forexPage .fx-chart-stats strong{display:block;color:#554264;font:600 13px var(--mono);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+#forexPage .fx-chart-stats small{font:calc(9px * var(--text-scale, 1)) var(--mono);color:#9486a0}
+#forexPage .fx-chart-source{display:flex;align-items:center;gap:6px;min-height:30px;padding:12px 24px 14px;margin:0;font-size:calc(9px * var(--text-scale, 1));color:#8f809b;line-height:1.6}
+#forexPage .fx-chart-source::before{content:'';width:5px;height:5px;flex:none;border-radius:50%;background:#9caeaa}
+#forexPage .fx-status{font-size:calc(10px * var(--text-scale, 1));background:#ffffff75;border:1px solid #ffffffd9;box-shadow:inset 0 1px white,0 3px 8px #7662910d}
+/* Less bulky currency selectors leave room for rates, names and readable status. */
+#forexPage .fx-currency-list{padding:10px;scrollbar-width:thin;scrollbar-color:#b8a3cf55 transparent}
+body.terminal #forexPage .fx-currency{position:relative;gap:10px;grid-template-columns:36px minmax(0,1fr) auto;margin:0 0 5px;min-height:66px;padding:11px 13px;border:1px solid transparent!important;border-radius:16px;background:linear-gradient(120deg,#ffffff5c,#ffffff26)!important;color:#62516f!important;text-shadow:none!important;box-shadow:inset 0 1px #ffffffc2!important;transform:none!important;transition:background .2s,border-color .2s,box-shadow .2s}
+body.terminal #forexPage .fx-currency:hover:not(:disabled){background:linear-gradient(120deg,#ffffffba,#f0e6ff73)!important;border-color:#ffffffd9!important;box-shadow:inset 0 1px #fff,0 4px 10px #84709810!important;transform:translateY(-1px)!important;filter:none}
+body.terminal #forexPage .fx-currency.active{background:linear-gradient(125deg,#f3eaff,#dcc9f8 65%,#d3e7f0)!important;border-color:#c7abe6!important;box-shadow:inset 0 1px #fff,inset 3px 0 #ac83d8,0 3px 8px #8f75ae1a!important;color:#67478a!important}
+body.terminal #forexPage .fx-currency.active small{color:#806695}
+body.terminal #forexPage .fx-currency strong{font-size:calc(15px * var(--text-scale, 1));line-height:1.35;font-weight:600;overflow-wrap:anywhere}
+#forexPage .fx-currency small{font-size:calc(9px * var(--text-scale, 1));line-height:1.5;margin-top:3px}
+#forexPage .fx-flag{display:grid;place-items:center;width:35px;height:35px;flex:none;font:calc(12px * var(--text-scale, 1)) var(--mono);letter-spacing:.5px;background:#ffffff7a;border:1px solid #fff;border-radius:12px;box-shadow:inset 0 1px white,0 2px 3px #75618a08;color:#80658e}
+#forexPage .fx-quote{font:600 13px var(--mono);font-variant-numeric:tabular-nums;min-width:0}
+#forexPage .fx-quote small{font-weight:400;font-size:calc(9px * var(--text-scale, 1))}
+#forexPage .fx-search{width:140px;padding:8px 11px;font-size:calc(10px * var(--text-scale, 1));background:#ffffff87;border-color:#ffffffb3;border-radius:12px;box-shadow:inset 0 1px 3px #87739c0c}
+body.terminal #forexPage .fx-exchange{background:linear-gradient(145deg,#fffdfccb,#f2efffc2 60%,#def3f0ba)!important;position:relative}
+#forexPage .fx-form{padding:22px;gap:16px 12px}
+#forexPage .fx-form label{font-size:calc(11px * var(--text-scale, 1));color:#7f6c8f}
+#forexPage .fx-form :is(select,input){padding:14px 12px;background:linear-gradient(135deg,#fffdfdd9,#ffffff7a);border-color:#ffffffeb;border-radius:14px;box-shadow:inset 0 1px 3px #8f7caa0e,0 1px 0 #b5a5c412;font-size:calc(13px * var(--text-scale, 1));transition:border-color .2s,box-shadow .2s}
+#forexPage .fx-form :is(select,input):focus{outline:2px solid #c6a8e670;outline-offset:1px;border-color:#c6a8e6;box-shadow:inset 0 1px 3px #8f7caa0e,0 0 0 4px #bd9ae710}
+#forexPage .fx-form #fxAmount{font-size:calc(23px * var(--text-scale, 1));letter-spacing:-.5px;padding:14px 15px}
+#forexPage .fx-preview{padding:17px 15px;background:linear-gradient(125deg,#e7dcfa85,#e0f3ed87);border-color:#ffffffed;box-shadow:inset 0 1px #fff;border-radius:17px}
+#forexPage .fx-preview b,#forexPage .fx-preview strong{font-size:calc(16px * var(--text-scale, 1));color:#5d4577;line-height:1.6}
+body.terminal #forexPage #fxSubmit{--cap-top:#cdb5ed;--cap-mid:#b397da;--cap-bottom:#9d7dc8;--cap-ink:#fff;min-height:46px;padding:12px 17px;border-radius:15px;color:#fff!important;text-shadow:0 1px #74529540!important;letter-spacing:.4px;box-shadow:inset 0 1px 2px #ffffffed,inset 0 -2px #9573be66,0 3px 0 #a488c7,0 7px 12px #8768b127!important}
+#forexPage .fx-note{font-size:calc(10px * var(--text-scale, 1));line-height:1.8;color:#8a7898;padding:0 2px}
+#forexPage #fxWalletList,#forexPage #fxHistory{padding:6px 17px 12px}
+#forexPage #fxHistory>.muted{margin:14px 7px;color:#8d7b9d;font-size:calc(11px * var(--text-scale, 1))}
+#forexPage .fx-wallet-row,#forexPage .fx-history-row{padding:15px 7px;border-bottom-color:#ffffffae;gap:14px;transition:background .2s;border-radius:10px}
+#forexPage .fx-wallet-row:hover,#forexPage .fx-history-row:hover{background:#ffffff45}
+#forexPage .fx-wallet-row strong{font:600 15px var(--mono);color:#655077}
+#forexPage .fx-wallet-row small,#forexPage .fx-history-row small{font-size:calc(9px * var(--text-scale, 1));color:#907d9e;line-height:1.6;margin-top:4px}
+#forexPage .fx-history-row>span{min-width:0;overflow-wrap:anywhere}
+#forexPage .fx-history-row>span:last-child{text-align:right;flex-shrink:0}
+#forexPage .fx-chart-enter .fx-price-line{animation:fx-trace-in .75s cubic-bezier(.2,.7,.3,1) both}
+#forexPage .fx-chart-enter .fx-area{animation:fx-area-in .8s ease both}
+#forexPage .fx-value-changed{animation:fx-value-emphasis .45s ease-out both;transform-origin:100% 50%}
+#forexPage.fx-arriving .fx-grid>.panel{animation:fx-panel-in .42s cubic-bezier(.2,.75,.3,1) both}
+#forexPage.fx-arriving .fx-grid>.panel:nth-child(2){animation-delay:45ms}
+#forexPage.fx-arriving .fx-grid>.panel:nth-child(3){animation-delay:85ms}
+#forexPage .fx-exchange-success::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;background:linear-gradient(105deg,transparent 25%,#e7fff7a3 45%,#ffffffc2 50%,transparent 68%);background-size:250% 100%;animation:fx-exchange-sheen .65s ease-out both}
+@keyframes fx-trace-in{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+@keyframes fx-area-in{from{opacity:0}to{opacity:.8}}
+@keyframes fx-value-emphasis{0%{color:#9d6ad8;translate:0 2px;opacity:.6}45%{color:#8054c6;translate:0 -1px;opacity:1}100%{translate:0 0;opacity:1}}
+@keyframes fx-panel-in{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+@keyframes fx-exchange-sheen{from{background-position:100% 0;opacity:0}25%{opacity:.85}to{background-position:0 0;opacity:0}}
+/* Let the chart determine the first row; a zero flex basis keeps the list
+   scrollable without letting its ten rows enlarge the chart's grid track. */
+@media(min-width:1001px){
+ body.terminal #forexPage .fx-grid{grid-template-areas:'overview chart' 'wallet exchange' 'history exchange';grid-template-rows:auto auto auto}
+ body.terminal #forexPage .fx-overview{display:flex;flex-direction:column;align-self:stretch;min-height:340px}
+ #forexPage .fx-overview>.panel-head{flex:none}
+ #forexPage .fx-currency-list{flex:1 1 0;min-height:0;max-height:none;overflow-y:auto}
+ body.terminal #forexPage :is(.fx-wallet,.fx-history){display:flex;flex-direction:column;align-self:stretch;min-height:215px}
+ #forexPage :is(.fx-wallet,.fx-history)>.panel-head{flex:none}
+ #forexPage :is(#fxWalletList,#fxHistory){min-height:0;max-height:220px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#b8a3cf55 transparent}
+}
+@media(max-width:1150px) and (min-width:1001px){#forexPage .fx-chart-tools{padding-inline:17px;gap:7px}#forexPage #fxRetry{margin-left:0}#forexPage .fx-currency{column-gap:7px}#forexPage .fx-chart-summary{padding-inline:21px}}
+@media(max-width:600px){
+ body.terminal #forexPage .fx-grid{gap:15px}
+ body.terminal #forexPage .panel{border-radius:22px}
+ body.terminal #forexPage .panel-head{padding:12px 16px;min-height:49px}
+ #forexPage .fx-chart-summary{padding:19px 18px 13px;gap:10px;align-items:flex-start}
+ #forexPage #fxHeroRate{font-size:calc(34px * var(--text-scale, 1));letter-spacing:-1.5px}
+ #forexPage #fxHeroUnit{font-size:calc(10px * var(--text-scale, 1))}
+ #forexPage .fx-chart-eyebrow{font-size:calc(10px * var(--text-scale, 1))}
+ #forexPage .fx-chart-badge{font-size:calc(9px * var(--text-scale, 1));padding:6px 7px}
+ #forexPage #fxHeroDate{font-size:calc(9px * var(--text-scale, 1))}
+ #forexPage #fxPeriodChange{font-size:calc(9px * var(--text-scale, 1));gap:5px}
+ #forexPage .fx-chart-tools{padding:8px 16px 12px;gap:8px}
+ #forexPage .fx-periods{margin-left:auto}
+ body.terminal #forexPage .fx-periods button{min-width:31px;min-height:31px;padding:6px;font-size:calc(10px * var(--text-scale, 1))}
+ body.terminal #forexPage #fxRetry{margin-left:0}
+ #forexPage #fxModeNote{margin:0 17px 7px;font-size:calc(9px * var(--text-scale, 1))}
+ #forexPage .fx-plot-wrap{margin:0 6px}
+ #forexPage .fx-chart-tooltip{min-width:130px;padding:9px 11px}
+ #forexPage .fx-chart-stats{margin:10px 17px 0;padding:12px 0}
+ #forexPage .fx-chart-stats>div{padding:0 9px}
+ #forexPage .fx-chart-stats strong{font-size:calc(11px * var(--text-scale, 1))}
+ #forexPage .fx-chart-stats span,#forexPage .fx-chart-stats small{font-size:calc(9px * var(--text-scale, 1))}
+ #forexPage .fx-chart-source{padding:11px 17px 13px;font-size:calc(9px * var(--text-scale, 1))}
+ #forexPage .fx-form{padding:17px;gap:14px 8px;grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr)}
+ #forexPage .fx-form :is(select,input){font-size:calc(11px * var(--text-scale, 1));padding:13px 9px}
+ #forexPage .fx-form #fxAmount{font-size:calc(22px * var(--text-scale, 1))}
+ #forexPage .fx-preview{padding:14px 12px;gap:10px}
+ #forexPage .fx-preview b,#forexPage .fx-preview strong{font-size:calc(14px * var(--text-scale, 1));overflow-wrap:anywhere}
+ #forexPage .fx-currency-list{max-height:380px}
+ #forexPage #fxWalletList,#forexPage #fxHistory{padding:6px 11px 10px}
+ #forexPage .fx-history-row{flex-wrap:wrap;gap:7px;font-size:calc(10px * var(--text-scale, 1))}
+ #forexPage .fx-history-row>span:last-child{flex-shrink:1}
+ body.terminal.large-type #forexPage .fx-chart-summary{flex-wrap:wrap}
+ body.terminal.large-type #forexPage .fx-periods{margin-left:0}
+ body.terminal.large-type #forexPage .fx-currency{grid-template-columns:30px minmax(0,1fr);column-gap:8px}
+ body.terminal.large-type #forexPage .fx-quote{grid-column:2;text-align:left}
+}
+body:is(.effects-off,.motion-off,.no-animations) #forexPage *,body:is(.effects-off,.motion-off,.no-animations) #forexPage *::before,body:is(.effects-off,.motion-off,.no-animations) #forexPage *::after{animation:none!important;transition:none!important}
+body.terminal:is(.effects-off,.motion-off,.no-animations) #forexPage :is(.fx-currency,.fx-periods button){transform:none!important;translate:none!important;scale:1!important}
+body.effects-off #forexPage .fx-chart-tooltip{backdrop-filter:none;-webkit-backdrop-filter:none}
+body:is(.effects-off,.motion-off,.no-animations) #forexPage .fx-exchange-success::after{display:none}
+@media(prefers-reduced-motion:reduce){#forexPage *,#forexPage *::before,#forexPage *::after{animation:none!important;transition:none!important}body.terminal #forexPage :is(.fx-currency,.fx-periods button){transform:none!important;translate:none!important;scale:1!important}#forexPage .fx-exchange-success::after{display:none}}
+
 /* A layered portrait inside the established lavender/mint glass shell. */
 #modal:has(.pet-customizer){width:min(920px,calc(100vw - 28px));max-width:none;max-height:92dvh}
 .pet-editor-intro{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 18px}.pet-kicker{font:calc(9px * var(--text-scale, 1)) var(--mono);letter-spacing:2px;color:#977bb2}.pet-editor-intro p{margin:0;color:#82708f;font-size:calc(12px * var(--text-scale, 1))}
@@ -10700,7 +10862,7 @@ const fxInit=FXMarket.init;
 FXMarket.init=function(){
  document.querySelector('.fx-grid').insertAdjacentHTML('afterbegin',`<section class="panel fx-chart-panel"><div class="panel-head"><span class="panel-title" id="fxChartPair">外汇模拟走势</span><strong class="mono" id="fxChartPrice">—</strong></div><div class="fx-chart-tools"><button class="btn" id="fxPlay">Ⅱ 暂停</button><button class="btn" id="fxNext">推进 5 分钟</button><select id="fxChartStyle" aria-label="外汇图表类型"><option value="candle">模拟 K 线</option><option value="line">折线</option></select><select id="fxChartWindow" aria-label="显示模拟分钟数"><option value="60">最近 60 分钟</option><option value="180">最近 180 分钟</option><option value="600">最近 600 分钟</option></select><button class="btn" id="fxRetry">重试获取</button></div><svg id="fxChart" viewBox="0 0 640 260" role="img" aria-label="随机模拟外汇走势，非真实历史行情"></svg><p id="fxChartSource" class="fx-chart-source"></p></section>`);
  fxInit.call(this);clearInterval(this.pulseTimer);
- this.pulseTimer=setInterval(()=>{if(this.ready&&this.running&&!document.hidden&&!$('forexPage').hidden&&!document.querySelector('dialog[open]')){this.tick();render()}},2000);
+ this.pulseTimer=setInterval(()=>{if(this.ready&&this.running&&game.s.fx?.quoteMode!=='daily'&&!document.hidden&&!$('forexPage').hidden&&!document.querySelector('dialog[open]')){this.tick();render()}},2000);
  $('fxPlay').onclick=()=>{this.running=!this.running;this.draw()};$('fxNext').onclick=()=>{this.tick(5);render()};
  $('fxRetry').onclick=()=>this.ensureRates();$('fxChartStyle').onchange=e=>{this.chartStyle=e.target.value;this.draw()};$('fxChartWindow').onchange=e=>{this.windowSize=Number(e.target.value);this.draw()};
  const life=LifeUI.open;LifeUI.open=function(){ $('forexPage').hidden=true;return life.call(this)};
@@ -10757,6 +10919,92 @@ const FXRateService={
 };
 
 'use strict';
+// All plotted samples are provider observations. Lines connect samples without interpolation.
+const FXChartView={
+ cache:null,model:null,index:-1,timers:new Map(),
+ motion(){return typeof LiquidGlass!=='undefined'&&LiquidGlass.allowed()},
+ pulse(node,name,duration=800){if(!node||!this.motion())return;clearTimeout(this.timers.get(node));node.classList.add(name);this.timers.set(node,setTimeout(()=>{node.classList.remove(name);this.timers.delete(node)},duration))},
+ number(value,digits){return Number(value).toLocaleString('en-US',{minimumFractionDigits:digits,maximumFractionDigits:digits})},
+ precision(value){return Math.min(8,Math.max(2,4-Math.floor(Math.log10(Math.abs(value)||1))))},
+ text(id,value){const node=$(id);if(node&&node.textContent!==value)node.textContent=value},
+ layout(){
+  if(!$('fxDailySummary'))return;
+  const daily=FXDailyMode.active();$('forexPage').dataset.quoteMode=daily?'daily':'simulation';
+  for(const id of ['fxDailySummary','fxDailyStats','fxPeriods'])$(id).hidden=!daily;
+  $('fxChartPrice').hidden=daily;$('fxHistoryWindow').hidden=true;
+  if(!daily){this.cache=null;this.model=null;this.hideTip();$('fxChart').setAttribute('viewBox','0 0 640 260');$('fxChart').removeAttribute('tabindex');$('fxChart').setAttribute('role','img');$('fxChart').classList.remove('fx-chart-enter');}
+  $('fxPeriods').querySelectorAll('button').forEach(b=>{const active=Number(b.dataset.fxRange)===FXDailyMode.historyDays;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
+ },
+ draw(){
+  this.layout();const chart=$('fxChart');if(!chart||!$('fxDailySummary'))return;
+  const from=FXMarket.from,to=FXMarket.to,history=game.s.fx.real.history,snapshot=FXDailyMode.snapshot();
+  const valid=FXRateService.valid(history,true)&&history.days===FXDailyMode.historyDays;
+  const points=valid?history.points.map(p=>({date:p.date,value:p.rates[from]/p.rates[to],time:Date.parse(p.date+'T00:00:00Z')})):[];
+  const rate=FXMarket.ready?FXMarket.rate():null,digits=this.precision(rate||1);
+  this.text('fxChartPair',from+' / '+to);this.text('fxHeroLabel','1 '+from+' 可兑换');this.text('fxHeroRate',rate?this.number(rate,digits):'—');this.text('fxHeroUnit',to);
+  this.text('fxHeroDate',snapshot?'发布于 '+snapshot.date:'等待最新发布');
+  const change=points.length>1?(points.at(-1).value/points[0].value-1)*100:null;
+  const changeNode=$('fxPeriodChange');changeNode.className='fx-period-change '+(change===null||Math.abs(change)<.00005?'':color(change));
+  this.text('fxPeriodDelta',change===null?'—':(change>0?'+':'')+change.toFixed(2)+'%');
+  this.text('fxPeriodCaption',change===null?'等待区间数据':'较区间首日');
+  const values=points.map(p=>p.value),min=values.length?Math.min(...values):null,max=values.length?Math.max(...values):null;
+  this.text('fxRangeLow',min===null?'—':this.number(min,this.precision(min)));this.text('fxRangeHigh',max===null?'—':this.number(max,this.precision(max)));this.text('fxSampleCount',points.length?points.length+' 天':'—');
+  $('fxRetry').setAttribute('aria-busy',String(FXMarket.loading||FXDailyMode.historyBusy));
+  this.text('fxChartSource',points.length?`Frankfurter · 真实日汇率${history.cached?' · 缓存':''}${FXRateService.stale(history)?' · 历史数据已过期':''}`:(FXDailyMode.historyBusy?'正在连接历史汇率…':FXDailyMode.historyError||'暂无可用历史汇率'));
+  const width=Math.max(280,Math.round($('fxPlotWrap').getBoundingClientRect().width)||640),height=width<480?242:280;
+  const key=[from,to,FXDailyMode.historyDays,width,height,FXDailyMode.historyBusy,FXDailyMode.historyError].join('|');
+  if(this.cache?.history===history&&this.cache?.key===key)return;
+  this.cache={history,key};this.model=null;this.hideTip();chart.setAttribute('viewBox',`0 0 ${width} ${height}`);chart.setAttribute('role','group');chart.setAttribute('tabindex','0');chart.setAttribute('aria-label',`${from} 兑换 ${to} 的真实历史日汇率。方向键逐日查看，Home 和 End 跳到首尾，Escape 退出查看。`);
+  const L=14,R=width-76,T=20,B=height-34;
+  if(!points.length){chart.innerHTML=`<g class="fx-chart-empty"><circle cx="${width/2}" cy="${height/2-36}" r="19" fill="none" stroke="currentColor" opacity=".2"/><path d="M${width/2-7} ${height/2-36}h14m-7-7v14" stroke="currentColor" opacity=".4"/><text x="${width/2}" y="${height/2+10}" text-anchor="middle">${FXDailyMode.historyBusy?'正在读取历史汇率':'这个区间暂无数据'}</text><text class="fx-axis-label" x="${width/2}" y="${height/2+33}" text-anchor="middle">${FXDailyMode.historyBusy?'稍等一下，正在连接市场':'试试其他周期，或刷新汇率'}</text></g>`;return;}
+  const pad=Math.max((max-min)*.2,max*.0004),low=min-pad,high=max+pad,span=points.at(-1).time-points[0].time;
+  const x=p=>span?L+(p.time-points[0].time)/span*(R-L):(L+R)/2,y=v=>T+(high-v)/(high-low)*(B-T);
+  const axisDigits=Math.min(8,Math.max(digits,Math.ceil(-Math.log10((high-low)/4))));
+  let svg=`<defs><linearGradient id="fxAreaGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a68ae4" stop-opacity=".34"/><stop offset="75%" stop-color="#b4b9ed" stop-opacity=".10"/><stop offset="100%" stop-color="#bce9e0" stop-opacity="0"/></linearGradient><linearGradient id="fxLineGradient" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#9677d2"/><stop offset="100%" stop-color="#7953bc"/></linearGradient></defs>`;
+  for(let i=0;i<5;i++){const v=high-(high-low)*i/4,yy=y(v);svg+=`<path class="fx-grid-line" d="M${L} ${yy}H${R}"/><text class="fx-axis-label" x="${R+12}" y="${yy+4}">${this.number(v,axisDigits)}</text>`;}
+  const locations=points.map(p=>`${x(p).toFixed(2)},${y(p.value).toFixed(2)}`).join(' '),last=points.at(-1);
+  svg+=`<path class="fx-baseline" d="M${L} ${y(points[0].value)}H${R}"/>`;
+  if(points.length>1)svg+=`<path class="fx-area" d="M${x(points[0])},${B}L${locations.replaceAll(' ','L')}L${x(last)},${B}Z" fill="url(#fxAreaGradient)"/><polyline class="fx-price-halo" aria-hidden="true" points="${locations}"/><polyline class="fx-price-line" points="${locations}" stroke="url(#fxLineGradient)" pathLength="1"/>`;
+  svg+=`<circle class="fx-last-halo" cx="${x(last)}" cy="${y(last.value)}" r="9"/><circle class="fx-last-dot" cx="${x(last)}" cy="${y(last.value)}" r="4"/>`;
+  const indices=[...new Set(width<480?[0,points.length-1]:[0,Math.floor((points.length-1)/2),points.length-1])];
+  for(const i of indices){const p=points[i];svg+=`<text class="fx-axis-label" x="${x(p)}" y="${height-8}" text-anchor="${i===0?'start':i===points.length-1?'end':'middle'}">${p.date.slice(5).replace('-','/')}</text>`;}
+  svg+=`<g id="fxChartCursor" visibility="hidden" pointer-events="none"><path id="fxCrossX" class="fx-guide"/><path id="fxCrossY" class="fx-guide fx-guide-soft"/><circle id="fxHoverPoint" class="fx-hover-point" r="5"/></g>`;
+  chart.innerHTML=svg;this.model={points,x,y,width,height,L,R,T,B,from,to,digits};this.index=-1;
+  chart.classList.remove('fx-chart-enter');if(this.motion())this.pulse(chart,'fx-chart-enter',900);
+ },
+ inspect(index,keyboard=false){
+  const m=this.model;if(!m||!FXDailyMode.active())return;this.index=Math.max(0,Math.min(m.points.length-1,index));const p=m.points[this.index],x=m.x(p),y=m.y(p.value),tip=$('fxChartTooltip');
+  $('fxChartCursor').setAttribute('visibility','visible');$('fxCrossX').setAttribute('d',`M${x} ${m.T}V${m.B}`);$('fxCrossY').setAttribute('d',`M${m.L} ${y}H${m.R}`);$('fxHoverPoint').setAttribute('cx',x);$('fxHoverPoint').setAttribute('cy',y);
+  this.text('fxTooltipDate',p.date);this.text('fxTooltipRate','1 '+m.from+' = '+this.number(p.value,this.precision(p.value))+' '+m.to);
+  tip.hidden=false;tip.style.left=Math.max(6,Math.min(m.width-tip.offsetWidth-6,x-tip.offsetWidth/2))+'px';tip.style.top=Math.max(4,y-78)+'px';
+  if(keyboard)this.text('fxChartAnnouncement',p.date+'，'+$('fxTooltipRate').textContent);
+ },
+ pointer(event){
+  const m=this.model;if(!m)return;const bounds=$('fxChart').getBoundingClientRect(),x=(event.clientX-bounds.left)/bounds.width*m.width;
+  let i=0;for(let j=1;j<m.points.length;j++)if(Math.abs(m.x(m.points[j])-x)<Math.abs(m.x(m.points[i])-x))i=j;
+  this.inspect(i);
+ },
+ hideTip(){if($('fxChartTooltip'))$('fxChartTooltip').hidden=true;$('fxChartCursor')?.setAttribute('visibility','hidden');this.index=-1},
+ init(){
+  const panel=document.querySelector('.fx-chart-panel');
+  panel.querySelector('.panel-head').insertAdjacentHTML('afterend',`<div id="fxDailySummary" class="fx-chart-summary" hidden><div><span id="fxHeroLabel" class="fx-chart-eyebrow">当前汇率</span><div class="fx-chart-quote"><strong id="fxHeroRate">—</strong><span id="fxHeroUnit">USD</span></div><div id="fxPeriodChange" class="fx-period-change"><b id="fxPeriodDelta">—</b><span id="fxPeriodCaption">较区间首日</span></div></div><div class="fx-chart-meta"><span class="fx-chart-badge">每日参考价</span><span id="fxHeroDate"></span></div></div>`);
+  $('fxHistoryWindow').insertAdjacentHTML('afterend','<div id="fxPeriods" class="fx-periods" role="group" aria-label="历史汇率周期">'+[[7,'1 周'],[30,'1 月'],[90,'3 月'],[365,'1 年']].map(([days,label])=>`<button type="button" data-fx-range="${days}" aria-pressed="false">${label}</button>`).join('')+'</div>');
+  const wrap=document.createElement('div');wrap.id='fxPlotWrap';wrap.className='fx-plot-wrap';$('fxChart').before(wrap);wrap.append($('fxChart'));wrap.insertAdjacentHTML('beforeend','<div id="fxChartTooltip" class="fx-chart-tooltip" hidden><span id="fxTooltipDate"></span><strong id="fxTooltipRate"></strong></div><span id="fxChartAnnouncement" class="fx-sr-only" role="status" aria-live="polite"></span>');
+  wrap.insertAdjacentHTML('afterend','<div id="fxDailyStats" class="fx-chart-stats" hidden><div><span>区间最低</span><strong id="fxRangeLow">—</strong></div><div><span>区间最高</span><strong id="fxRangeHigh">—</strong></div><div><span>有报价的日期</span><strong id="fxSampleCount">—</strong></div></div>');
+  $('fxPeriods').onclick=e=>{const button=e.target.closest('[data-fx-range]');if(!button||Number(button.dataset.fxRange)===FXDailyMode.historyDays)return;$('fxHistoryWindow').value=button.dataset.fxRange;$('fxHistoryWindow').dispatchEvent(new Event('change'))};
+  const chart=$('fxChart');chart.addEventListener('pointermove',e=>{if(e.pointerType!=='touch'||e.buttons)this.pointer(e)},{passive:true});chart.addEventListener('pointerdown',e=>this.pointer(e),{passive:true});chart.addEventListener('pointerleave',()=>this.hideTip());chart.addEventListener('pointercancel',()=>this.hideTip());chart.addEventListener('blur',()=>this.hideTip());
+  chart.addEventListener('keydown',e=>{if(!this.model)return;let i=this.index<0?this.model.points.length-1:this.index;if(e.key==='ArrowLeft')i--;else if(e.key==='ArrowRight')i++;else if(e.key==='Home')i=0;else if(e.key==='End')i=this.model.points.length-1;else if(e.key==='Escape'){this.hideTip();return}else return;e.preventDefault();e.stopPropagation();this.inspect(i,true)});
+  this.observer=new ResizeObserver(()=>{if(FXDailyMode.active()&&!$('forexPage').hidden)this.draw()});this.observer.observe(wrap);
+  const show=FXMarket.show.bind(FXMarket);FXMarket.show=()=>{const entering=$('forexPage').hidden;show();if(entering)this.pulse($('forexPage'),'fx-arriving',750)};
+  const exchange=FXMarket.exchange.bind(FXMarket);FXMarket.exchange=()=>{const first=FXMarket.history[0];exchange();if(FXMarket.history[0]!==first)this.pulse(document.querySelector('.fx-exchange'),'fx-exchange-success',900)};
+  $('fxAmount').addEventListener('input',()=>this.pulse($('fxReceived'),'fx-value-changed',450));
+  const titles=[['.fx-overview .panel-title','货币行情'],['.fx-exchange .panel-title','货币兑换'],['.fx-wallet .panel-title','我的钱包']];for(const [selector,label] of titles){const n=document.querySelector(selector);if(n)n.textContent=label}
+  for(const [id,label] of [['fxFrom','支付货币'],['fxTo','获得货币'],['fxAmount','兑换数量'],['fxRate','当前汇率 '],['fxReceived','预计获得 ']]){const parent=$(id).parentElement;for(const child of parent.childNodes)if(child.nodeType===3&&child.textContent.trim()){child.textContent=label;break}}
+  this.layout();
+ }
+};
+
+'use strict';
 // Adds real reference-rate practice without replacing the existing random market.
 const FXDailyMode={
  historyDays:30,error:'',historyError:'',request:0,historyRequest:0,
@@ -10786,24 +11034,11 @@ const FXDailyMode={
  controls(){
   if(!$('fxQuoteMode'))return;const daily=this.active();$('fxQuoteMode').value=daily?'daily':'simulation';
   for(const id of ['fxPlay','fxNext','fxChartStyle','fxChartWindow'])$(id).hidden=daily;
-  $('fxHistoryWindow').hidden=!daily;$('fxRetry').textContent=daily?'刷新汇率':'重试获取';
-  $('fxModeNote').textContent=daily?'真实日汇率 · 虚拟资金练习 · 不提供盘中价格':'随机模拟行情 · 真实日汇率仅作为起点';
+  $('fxHistoryWindow').hidden=true;FXChartView.layout();$('fxRetry').textContent=daily?'刷新汇率':'重试获取';
+  $('fxModeNote').textContent=daily?'工作日更新 · 滑动或使用方向键查看历史':'随机模拟行情 · 真实日汇率仅作为起点';
   document.querySelector('#forexPage .chapter p').textContent='现货兑换 · 仅使用虚拟资金 · 切换行情前请先将外币换回人民币';
  },
- draw(){
-  this.controls();$('fxChartPair').textContent=FXMarket.from+' / '+FXMarket.to;$('fxChart').setAttribute('aria-label','Frankfurter 真实历史日汇率折线图');
-  const snapshot=this.snapshot(),history=game.s.fx.real.history,validHistory=FXRateService.valid(history,true)&&history.days===this.historyDays;
-  const points=validHistory?history.points.map(p=>({date:p.date,value:p.rates[FXMarket.from]/p.rates[FXMarket.to]})):[];
-  $('fxChartPrice').textContent=FXMarket.ready?FXMarket.fmt(FXMarket.rate()):'—';
-  $('fxChartSource').textContent=points.length?`Frankfurter · 历史日汇率（非 K 线） · ${points[0].date} — ${points.at(-1).date}${history.cached?' · 缓存':''}${history.stale?' · 历史缓存已过期':''}`:(this.historyBusy?'正在读取真实历史汇率…':this.historyError||'暂无历史数据，未生成模拟图。');
-  if(points.length<2){$('fxChart').innerHTML='<text x="320" y="140" text-anchor="middle" fill="currentColor">'+(this.historyBusy?'正在读取真实历史…':points.length?'该区间只有一个发布日':'暂无可用历史数据')+'</text>';return;}
-  const values=points.map(p=>p.value),min=Math.min(...values),max=Math.max(...values),pad=Math.max((max-min)*.15,max*.0005),low=min-pad,high=max+pad;
-  const x=i=>12+548*i/(points.length-1),y=v=>18+(high-v)/(high-low)*212;let svg='';
-  for(let i=0;i<5;i++){const v=low+(high-low)*i/4,yy=y(v);svg+=`<path d="M12 ${yy}H560" stroke="currentColor" opacity=".12"/><text x="568" y="${yy+4}" font-size="11" fill="currentColor">${v.toFixed(v<1?5:3)}</text>`;}
-  svg+=`<polyline points="${points.map((p,i)=>x(i)+','+y(p.value)).join(' ')}" fill="none" stroke="#9270c9" stroke-width="2"/>`;
-  svg+=points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.value)}" r="2" fill="#9270c9"><title>${p.date}：${p.value.toFixed(6)}</title></circle>`).join('');
-  svg+=`<text x="12" y="253" font-size="11" fill="currentColor">${points[0].date}</text><text x="560" y="253" text-anchor="end" font-size="11" fill="currentColor">${points.at(-1).date}</text>`;$('fxChart').innerHTML=svg;
- },
+ draw(){this.controls();FXChartView.draw()},
  renderList(query=''){
   const snapshot=this.snapshot(),history=game.s.fx.real.history,previous=FXRateService.valid(history,true)&&snapshot?history.points.filter(p=>p.date<snapshot.date).at(-1):null;
   $('fxCurrencyList').innerHTML=FXMarket.currencies.filter(([c,n])=>(c+n).toLowerCase().includes(query.toLowerCase())).map(([c,n,flag])=>{
@@ -10854,7 +11089,7 @@ const FXDailyMode={
   FXMarket.renderList=function(q){return FXDailyMode.active()?FXDailyMode.renderList(q):previous.renderList.call(this,q)};
   FXMarket.draw=function(){if(FXDailyMode.active())return FXDailyMode.draw();FXDailyMode.controls();$('fxChart')?.setAttribute('aria-label','随机模拟外汇走势，非真实历史行情');return previous.draw.call(this)};
   FXMarket.exchange=function(){return FXDailyMode.active()?FXDailyMode.exchange():previous.exchange.call(this)};
-  FXMarket.paint=function(){previous.paint.call(this);if(FXDailyMode.active())FXDailyMode.paint();
+  FXMarket.paint=function(){if(FXDailyMode.active())FXDailyMode.paint();else previous.paint.call(this);
    $('fxHistory').innerHTML=this.history.slice(0,20).map(t=>`<div class="fx-history-row"><span>${esc(t.from)} → ${esc(t.to)}<small>${esc(t.at)} · ${t.mode==='daily'?'真实日汇率 / 虚拟兑换':'随机模拟'}${t.rateDate?' · '+esc(t.rateDate):''}</small></span><span>${this.fmt(t.a)} → ${this.fmt(t.b)}</span></div>`).join('')||'<p class="muted">还没有兑换记录</p>';
   };
   const originalInit=FXMarket.init;FXMarket.init=function(){
@@ -10865,7 +11100,7 @@ const FXDailyMode={
    $('fxRetry').onclick=()=>FXDailyMode.active()?Promise.allSettled([FXDailyMode.refresh(true),FXDailyMode.history(true)]):this.ensureRates();
    const show=this.show.bind(this);this.show=()=>{show();if(FXDailyMode.active())Promise.allSettled([FXDailyMode.refresh(),FXDailyMode.history()])};
    Object.defineProperty(StockGame.prototype,'equity',{configurable:true,get(){const f=this.s.fx,p=f?.quoteMode==='daily'?f.real?.snapshot?.rates:f?.series?.at(-1)?.prices;let fx=0;if(p)for(const [c,v] of Object.entries(f.wallet||{}))if(c!=='CNY')fx+=v*(p[c]||0)*100;return this.s.cash+this.marketValue+Math.round(fx)}});
-   FXDailyMode.controls();this.paint();
+   FXChartView.init();FXDailyMode.controls();this.paint();
    setInterval(()=>{if(FXDailyMode.active()&&!document.hidden&&!$('forexPage').hidden)FXDailyMode.refresh()},60000);
   };
  }

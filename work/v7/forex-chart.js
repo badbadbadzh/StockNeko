@@ -120,7 +120,7 @@ const fxInit=FXMarket.init;
 FXMarket.init=function(){
  document.querySelector('.fx-grid').insertAdjacentHTML('afterbegin',`<section class="panel fx-chart-panel"><div class="panel-head"><span class="panel-title" id="fxChartPair">外汇模拟走势</span><strong class="mono" id="fxChartPrice">—</strong></div><div class="fx-chart-tools"><button class="btn" id="fxPlay">Ⅱ 暂停</button><button class="btn" id="fxNext">推进 5 分钟</button><select id="fxChartStyle" aria-label="外汇图表类型"><option value="candle">模拟 K 线</option><option value="line">折线</option></select><select id="fxChartWindow" aria-label="显示模拟分钟数"><option value="60">最近 60 分钟</option><option value="180">最近 180 分钟</option><option value="600">最近 600 分钟</option></select><button class="btn" id="fxRetry">重试获取</button></div><svg id="fxChart" viewBox="0 0 640 260" role="img" aria-label="随机模拟外汇走势，非真实历史行情"></svg><p id="fxChartSource" class="fx-chart-source"></p></section>`);
  fxInit.call(this);clearInterval(this.pulseTimer);
- this.pulseTimer=setInterval(()=>{if(this.ready&&this.running&&!document.hidden&&!$('forexPage').hidden&&!document.querySelector('dialog[open]')){this.tick();render()}},2000);
+ this.pulseTimer=setInterval(()=>{if(this.ready&&this.running&&game.s.fx?.quoteMode!=='daily'&&!document.hidden&&!$('forexPage').hidden&&!document.querySelector('dialog[open]')){this.tick();render()}},2000);
  $('fxPlay').onclick=()=>{this.running=!this.running;this.draw()};$('fxNext').onclick=()=>{this.tick(5);render()};
  $('fxRetry').onclick=()=>this.ensureRates();$('fxChartStyle').onchange=e=>{this.chartStyle=e.target.value;this.draw()};$('fxChartWindow').onchange=e=>{this.windowSize=Number(e.target.value);this.draw()};
  const life=LifeUI.open;LifeUI.open=function(){ $('forexPage').hidden=true;return life.call(this)};

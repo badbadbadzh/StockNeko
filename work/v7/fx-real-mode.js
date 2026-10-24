@@ -28,24 +28,11 @@ const FXDailyMode={
  controls(){
   if(!$('fxQuoteMode'))return;const daily=this.active();$('fxQuoteMode').value=daily?'daily':'simulation';
   for(const id of ['fxPlay','fxNext','fxChartStyle','fxChartWindow'])$(id).hidden=daily;
-  $('fxHistoryWindow').hidden=!daily;$('fxRetry').textContent=daily?'刷新汇率':'重试获取';
-  $('fxModeNote').textContent=daily?'真实日汇率 · 虚拟资金练习 · 不提供盘中价格':'随机模拟行情 · 真实日汇率仅作为起点';
+  $('fxHistoryWindow').hidden=true;FXChartView.layout();$('fxRetry').textContent=daily?'刷新汇率':'重试获取';
+  $('fxModeNote').textContent=daily?'工作日更新 · 滑动或使用方向键查看历史':'随机模拟行情 · 真实日汇率仅作为起点';
   document.querySelector('#forexPage .chapter p').textContent='现货兑换 · 仅使用虚拟资金 · 切换行情前请先将外币换回人民币';
  },
- draw(){
-  this.controls();$('fxChartPair').textContent=FXMarket.from+' / '+FXMarket.to;$('fxChart').setAttribute('aria-label','Frankfurter 真实历史日汇率折线图');
-  const snapshot=this.snapshot(),history=game.s.fx.real.history,validHistory=FXRateService.valid(history,true)&&history.days===this.historyDays;
-  const points=validHistory?history.points.map(p=>({date:p.date,value:p.rates[FXMarket.from]/p.rates[FXMarket.to]})):[];
-  $('fxChartPrice').textContent=FXMarket.ready?FXMarket.fmt(FXMarket.rate()):'—';
-  $('fxChartSource').textContent=points.length?`Frankfurter · 历史日汇率（非 K 线） · ${points[0].date} — ${points.at(-1).date}${history.cached?' · 缓存':''}${history.stale?' · 历史缓存已过期':''}`:(this.historyBusy?'正在读取真实历史汇率…':this.historyError||'暂无历史数据，未生成模拟图。');
-  if(points.length<2){$('fxChart').innerHTML='<text x="320" y="140" text-anchor="middle" fill="currentColor">'+(this.historyBusy?'正在读取真实历史…':points.length?'该区间只有一个发布日':'暂无可用历史数据')+'</text>';return;}
-  const values=points.map(p=>p.value),min=Math.min(...values),max=Math.max(...values),pad=Math.max((max-min)*.15,max*.0005),low=min-pad,high=max+pad;
-  const x=i=>12+548*i/(points.length-1),y=v=>18+(high-v)/(high-low)*212;let svg='';
-  for(let i=0;i<5;i++){const v=low+(high-low)*i/4,yy=y(v);svg+=`<path d="M12 ${yy}H560" stroke="currentColor" opacity=".12"/><text x="568" y="${yy+4}" font-size="11" fill="currentColor">${v.toFixed(v<1?5:3)}</text>`;}
-  svg+=`<polyline points="${points.map((p,i)=>x(i)+','+y(p.value)).join(' ')}" fill="none" stroke="#9270c9" stroke-width="2"/>`;
-  svg+=points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.value)}" r="2" fill="#9270c9"><title>${p.date}：${p.value.toFixed(6)}</title></circle>`).join('');
-  svg+=`<text x="12" y="253" font-size="11" fill="currentColor">${points[0].date}</text><text x="560" y="253" text-anchor="end" font-size="11" fill="currentColor">${points.at(-1).date}</text>`;$('fxChart').innerHTML=svg;
- },
+ draw(){this.controls();FXChartView.draw()},
  renderList(query=''){
   const snapshot=this.snapshot(),history=game.s.fx.real.history,previous=FXRateService.valid(history,true)&&snapshot?history.points.filter(p=>p.date<snapshot.date).at(-1):null;
   $('fxCurrencyList').innerHTML=FXMarket.currencies.filter(([c,n])=>(c+n).toLowerCase().includes(query.toLowerCase())).map(([c,n,flag])=>{
@@ -96,7 +83,7 @@ const FXDailyMode={
   FXMarket.renderList=function(q){return FXDailyMode.active()?FXDailyMode.renderList(q):previous.renderList.call(this,q)};
   FXMarket.draw=function(){if(FXDailyMode.active())return FXDailyMode.draw();FXDailyMode.controls();$('fxChart')?.setAttribute('aria-label','随机模拟外汇走势，非真实历史行情');return previous.draw.call(this)};
   FXMarket.exchange=function(){return FXDailyMode.active()?FXDailyMode.exchange():previous.exchange.call(this)};
-  FXMarket.paint=function(){previous.paint.call(this);if(FXDailyMode.active())FXDailyMode.paint();
+  FXMarket.paint=function(){if(FXDailyMode.active())FXDailyMode.paint();else previous.paint.call(this);
    $('fxHistory').innerHTML=this.history.slice(0,20).map(t=>`<div class="fx-history-row"><span>${esc(t.from)} → ${esc(t.to)}<small>${esc(t.at)} · ${t.mode==='daily'?'真实日汇率 / 虚拟兑换':'随机模拟'}${t.rateDate?' · '+esc(t.rateDate):''}</small></span><span>${this.fmt(t.a)} → ${this.fmt(t.b)}</span></div>`).join('')||'<p class="muted">还没有兑换记录</p>';
   };
   const originalInit=FXMarket.init;FXMarket.init=function(){
@@ -107,7 +94,7 @@ const FXDailyMode={
    $('fxRetry').onclick=()=>FXDailyMode.active()?Promise.allSettled([FXDailyMode.refresh(true),FXDailyMode.history(true)]):this.ensureRates();
    const show=this.show.bind(this);this.show=()=>{show();if(FXDailyMode.active())Promise.allSettled([FXDailyMode.refresh(),FXDailyMode.history()])};
    Object.defineProperty(StockGame.prototype,'equity',{configurable:true,get(){const f=this.s.fx,p=f?.quoteMode==='daily'?f.real?.snapshot?.rates:f?.series?.at(-1)?.prices;let fx=0;if(p)for(const [c,v] of Object.entries(f.wallet||{}))if(c!=='CNY')fx+=v*(p[c]||0)*100;return this.s.cash+this.marketValue+Math.round(fx)}});
-   FXDailyMode.controls();this.paint();
+   FXChartView.init();FXDailyMode.controls();this.paint();
    setInterval(()=>{if(FXDailyMode.active()&&!document.hidden&&!$('forexPage').hidden)FXDailyMode.refresh()},60000);
   };
  }
