@@ -2,6 +2,8 @@
 Object.assign(FXMarket,{
  running:true,windowSize:60,chartStyle:'candle',loading:false,
  load(){
+  // Every save or mode load invalidates outstanding simulation requests.
+  this.simulationRequest=(this.simulationRequest||0)+1;this.loading=false;
   if(!game.s.fx){
    game.s.fx={wallet:{},history:[],series:[],base:null,minute:0,drift:{}};
    // The earlier FX version used one global wallet. Claim it once, preserving funds.
@@ -20,16 +22,21 @@ Object.assign(FXMarket,{
  save(){game.s.fx.wallet=this.wallet;game.s.fx.history=this.history;return save();},
  valid(r){return this.currencies.every(([c])=>Number.isFinite(r[c])&&r[c]>0)},
  async ensureRates(){
-  if(this.loading||this.ready)return;this.loading=true;this.paint();
+  if(this.loading||this.ready)return;
+  const state=game.s.fx,request=this.simulationRequest=(this.simulationRequest||0)+1;
+  const current=()=>state===game.s.fx&&request===this.simulationRequest&&(state.quoteMode||'simulation')==='simulation';
+  if(!current())return;this.loading=true;this.paint();
   try{
    const response=await fetch('https://api.frankfurter.dev/v1/latest?base=CNY',{signal:AbortSignal.timeout(10000)});
    if(!response.ok)throw Error('行情请求失败');const data=await response.json(),r={CNY:1};
    for(const [c] of this.currencies)if(c!=='CNY')r[c]=1/data.rates[c];
    if(!this.valid(r)||!/^\d{4}-\d{2}-\d{2}$/.test(data.date))throw Error('汇率不完整');
+   if(!current())return;
    localStorage.setItem('stock-meow-fx-anchor',JSON.stringify({r,date:data.date}));this.anchor(r,data.date,false);
   }catch(e){
+   if(!current())return;
    try{const cache=JSON.parse(localStorage.getItem('stock-meow-fx-anchor')||'null');if(cache&&this.valid(cache.r)&&/^\d{4}-\d{2}-\d{2}$/.test(cache.date))this.anchor(cache.r,cache.date,true);}catch{}
-  }finally{this.loading=false;this.paint();}
+  }finally{if(current()){this.loading=false;this.paint();}}
  },
  anchor(r,date,cached){
   if(this.ready)return;
@@ -121,4 +128,4 @@ FXMarket.init=function(){
  this.hide=()=>{$('forexPage').hidden=true;LifeUI.trade()};
  this.paint();
 };
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>FXMarket.init());else FXMarket.init();
+// Initialized after the real-rate mode adapter.

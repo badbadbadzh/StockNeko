@@ -16,3 +16,7 @@
 .fx-preview{flex-wrap:wrap}.fx-form>*{min-width:0}#fxSubmit{grid-column:1/-1}
 body.terminal .fx-currency.active{--cap-top:#c9a8ef;--cap-mid:#a477db;--cap-bottom:#8960b5;color:white}
 @media(max-width:1000px){.fx-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'chart' 'exchange' 'overview' 'wallet' 'history'}}
+.fx-mode-note{margin:0 16px 10px;font-size:11px;color:#876e9d}
+#fxQuoteMode{font-weight:600;color:#7951a6;background:#f5eaffd9;border-color:#fff}
+.fx-chart-tools [hidden]{display:none!important}
+#fxUpdated{overflow-wrap:anywhere}
